@@ -25,42 +25,6 @@
 	}
 }
 
-.navbar {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	font-size: 1.25em;
-	font-weight: $fw-Semibold;
-	height: 100px;
-	position: sticky;
-	top: 0;
-	z-index: 100;
-	.brand {
-		font-weight: $fw-Bold;
-	}
-	ul {
-		li {
-			display: inline-block;
-			.nav-link {
-				padding: 1.5em;
-				transition: 0.4s ease;
-				&:hover,
-				&:focus {
-					color: $clr-accent;
-				}
-			}
-			.active {
-				opacity: 0.6;
-				cursor: not-allowed;
-				&:hover,
-				&:focus {
-					color: currentColor;
-				}
-			}
-		}
-	}
-}
-
 .hero {
 	height: calc(100vh - 100px);
 	background: $clr-primary;
@@ -126,7 +90,7 @@
 
 .projects {
 	height: fit-content;
-	min-height: 100vh;
+
 	background-color: $clr-primary;
 	.container {
 		height: 100%;
@@ -155,7 +119,9 @@
 				.projects-feature {
 					aspect-ratio: 7/4;
 					transition: 0.3s ease;
-					display: block;
+					display: inline-block;
+					height: 100%;
+					width: 100%;
 					position: relative;
 					overflow: hidden;
 					border-radius: 1em;
@@ -163,13 +129,13 @@
 					.feature-title {
 						color: $clr-secondary;
 						font-size: 3em;
-						padding: 3rem 3rem 0.2rem 3rem;
+						padding: 1em 1em 0.2em 1em;
 					}
 					.feature-subtitle {
 						font-size: 2rem;
 						font-weight: $fw-Semibold;
 						color: $clr-secondary;
-						padding: 0 3rem;
+						padding: 0 1.8em;
 					}
 
 					&::after {

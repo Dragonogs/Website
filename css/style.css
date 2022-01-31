@@ -14,6 +14,7 @@ body {
   font-family: "Inter", sans-serif;
   background: #0e1212;
   color: #dbdbdb;
+  overflow-x: hidden;
 }
 
 strong {
@@ -58,6 +59,13 @@ a {
 
 .navbar .brand {
   font-weight: 700;
+  padding: 1.5em;
+}
+
+.navbar ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .navbar ul li {
@@ -65,13 +73,22 @@ a {
 }
 
 .navbar ul li .nav-link {
-  padding: 1.5em;
+  margin: 1.5em;
   -webkit-transition: 0.4s ease;
   transition: 0.4s ease;
 }
 
 .navbar ul li .nav-link:hover, .navbar ul li .nav-link:focus {
   color: #682ae9;
+}
+
+.navbar ul li .dropdown-btn {
+  background: transparent;
+  border: none;
+  color: #dbdbdb;
+  font-size: 2em;
+  display: none;
+  margin: 0 0.75em;
 }
 
 .navbar ul li .active {
@@ -184,51 +201,6 @@ footer::before {
   opacity: 1;
 }
 
-.navbar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 1.25em;
-  font-weight: 600;
-  height: 100px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.navbar .brand {
-  font-weight: 700;
-}
-
-.navbar ul li {
-  display: inline-block;
-}
-
-.navbar ul li .nav-link {
-  padding: 1.5em;
-  -webkit-transition: 0.4s ease;
-  transition: 0.4s ease;
-}
-
-.navbar ul li .nav-link:hover, .navbar ul li .nav-link:focus {
-  color: #682ae9;
-}
-
-.navbar ul li .active {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.navbar ul li .active:hover, .navbar ul li .active:focus {
-  color: currentColor;
-}
-
 .hero {
   height: calc(100vh - 100px);
   background: #0e1212;
@@ -309,7 +281,6 @@ footer::before {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  min-height: 100vh;
   background-color: #0e1212;
 }
 
@@ -362,7 +333,9 @@ footer::before {
   aspect-ratio: 7/4;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
-  display: block;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
   position: relative;
   overflow: hidden;
   border-radius: 1em;
@@ -372,14 +345,14 @@ footer::before {
 .projects .container ul li .projects-feature .feature-title {
   color: #dbdbdb;
   font-size: 3em;
-  padding: 3rem 3rem 0.2rem 3rem;
+  padding: 1em 1em 0.2em 1em;
 }
 
 .projects .container ul li .projects-feature .feature-subtitle {
   font-size: 2rem;
   font-weight: 600;
   color: #dbdbdb;
-  padding: 0 3rem;
+  padding: 0 1.8em;
 }
 
 .projects .container ul li .projects-feature::after {
@@ -415,5 +388,104 @@ footer::before {
 .project-website {
   background-image: url(../img/website@2x.jpg);
   background-size: cover;
+}
+
+@media screen and (max-width: 1300px) {
+  .projects .container ul {
+    width: 70%;
+  }
+  .projects .container ul li:nth-child(even) {
+    margin-left: 0;
+    text-align: right;
+  }
+  .projects .container ul li:nth-child(odd) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .projects .container ul {
+    width: 85%;
+  }
+  .projects .container ul li .projects-feature .feature-title {
+    font-size: 2em;
+  }
+  .projects .container ul li .projects-feature .feature-subtitle {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 715px) {
+  .navbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 1.25em;
+    font-weight: 600;
+    height: 100px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .navbar .brand {
+    font-weight: 700;
+    padding: 1.5em;
+  }
+  .navbar ul li {
+    display: inline-block;
+  }
+  .navbar ul li .nav-link {
+    display: none;
+  }
+  .navbar ul li .nav-link:hover, .navbar ul li .nav-link:focus {
+    color: #682ae9;
+  }
+  .navbar ul li .dropdown-btn {
+    display: block;
+  }
+  .navbar ul li .active {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .navbar ul li .active:hover, .navbar ul li .active:focus {
+    color: currentColor;
+  }
+  .projects .container .projects-title {
+    font-size: 3em;
+  }
+  .projects .container ul {
+    width: 100%;
+  }
+  .projects .container ul li .projects-feature .feature-title {
+    font-size: 2em;
+  }
+  .projects .container ul li .projects-feature .feature-subtitle {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .socials-sidebar {
+    display: none;
+  }
+  .projects .container .projects-title {
+    font-size: 2.5em;
+  }
+  .projects .container ul {
+    width: 100%;
+  }
+  .projects .container ul li .projects-feature .feature-title {
+    font-size: 1.5em;
+  }
+  .projects .container ul li .projects-feature .feature-subtitle {
+    font-size: 1em;
+  }
 }
 /*# sourceMappingURL=style.css.map */
