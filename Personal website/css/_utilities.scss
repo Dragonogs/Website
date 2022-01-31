@@ -1,0 +1,54 @@
+$clr-primary: #0e1212;
+$clr-secondary: #dbdbdb;
+$clr-accent: #682ae9;
+
+$ff-primary: "Inter", sans-serif;
+$ff-secondary: "Vujahday Script", cursive;
+
+$fw-Bold: 700;
+$fw-Semibold: 600;
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style: none;
+	text-decoration: none;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: $ff-primary;
+	background: $clr-primary;
+	color: $clr-secondary;
+}
+
+strong {
+	color: $clr-accent;
+	position: relative;
+	&::before {
+		content: "";
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		box-shadow: $clr-accent 0px 0px 88px;
+		background-color: rgba($clr-accent, $alpha: 0.1);
+		border-radius: 50px;
+	}
+}
+
+a {
+	color: $clr-secondary;
+}
+
+.flex {
+	display: flex;
+}
+
+.container {
+	width: 80%;
+	max-width: 70rem;
+	margin: 0 auto;
+}

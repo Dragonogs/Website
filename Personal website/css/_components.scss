@@ -1,0 +1,56 @@
+.navbar {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 1.25em;
+	font-weight: $fw-Semibold;
+	height: 100px;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	.brand {
+		font-weight: $fw-Bold;
+	}
+	ul {
+		li {
+			display: inline-block;
+			.nav-link {
+				padding: 1.5em;
+				transition: 0.4s ease;
+				&:hover,
+				&:focus {
+					color: $clr-accent;
+				}
+			}
+			.active {
+				opacity: 0.6;
+				cursor: not-allowed;
+				&:hover,
+				&:focus {
+					color: currentColor;
+				}
+			}
+		}
+	}
+}
+
+footer {
+	position: relative;
+	height: 200px;
+	width: 80%;
+	max-width: 70rem;
+	margin: 0 auto;
+	background: $clr-primary;
+	.footer {
+		padding-top: 84px;
+		text-align: center;
+	}
+	&::before {
+		content: "";
+		height: 1px;
+		width: 100%;
+		position: absolute;
+		background-color: $clr-secondary;
+		opacity: 0.1;
+	}
+}
