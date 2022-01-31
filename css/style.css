@@ -19,17 +19,7 @@ body {
 strong {
   color: #682ae9;
   position: relative;
-}
-
-strong::before {
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  -webkit-box-shadow: #682ae9 0px 0px 88px;
-          box-shadow: #682ae9 0px 0px 88px;
-  background-color: rgba(104, 42, 233, 0.1);
-  border-radius: 50px;
+  text-shadow: #682ae9 0px 0px 88px;
 }
 
 a {

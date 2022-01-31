@@ -28,15 +28,7 @@ body {
 strong {
 	color: $clr-accent;
 	position: relative;
-	&::before {
-		content: "";
-		position: absolute;
-		height: 100%;
-		width: 100%;
-		box-shadow: $clr-accent 0px 0px 88px;
-		background-color: rgba($clr-accent, $alpha: 0.1);
-		border-radius: 50px;
-	}
+	text-shadow: $clr-accent 0px 0px 88px;
 }
 
 a {
