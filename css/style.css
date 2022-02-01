@@ -10,6 +10,10 @@
   scroll-behavior: smooth;
 }
 
+html {
+  scrollbar-width: none;
+}
+
 body {
   font-family: "Inter", sans-serif;
   background: #0e1212;
@@ -237,7 +241,6 @@ footer::before {
 }
 
 .contact .container .form .submit-btn:disabled {
-  background: #190740;
   pointer-events: none;
 }
 

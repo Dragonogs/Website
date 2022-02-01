@@ -19,6 +19,10 @@ $fw-Semibold: 600;
 	scroll-behavior: smooth;
 }
 
+html {
+	scrollbar-width: none;
+}
+
 body {
 	font-family: $ff-primary;
 	background: $clr-primary;
