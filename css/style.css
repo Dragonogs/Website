@@ -180,12 +180,12 @@ footer::before {
   display: inline;
   width: 60%;
   text-align: center;
-  padding-bottom: 1em;
+  padding-bottom: 0.666666em;
 }
 
 .contact .container .form {
   background: #0c0f0f;
-  height: 60%;
+  height: 600px;
   width: 60%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -199,7 +199,7 @@ footer::before {
           align-items: center;
   border-radius: 1em;
   margin: 20px auto;
-  padding: 50px 0;
+  padding: 2em 0;
 }
 
 .contact .container .form .form-input {
@@ -215,28 +215,33 @@ footer::before {
   margin: 1em;
 }
 
-.contact .container .form .form-input:nth-child(4) {
+.contact .container .form .form-input:nth-child(5) {
   margin-top: 0;
 }
 
+.contact .container .form .form-input:nth-child(7) {
+  margin-bottom: 0;
+}
+
 .contact .container .form .text-area {
-  height: 25%;
+  height: 200px;
   resize: none;
 }
 
 .contact .container .form .submit-btn {
   position: relative;
   display: inline-block;
+  color: #dbdbdb;
+  font-family: "Inter", sans-serif;
+  background-color: #682ae9;
   font-size: 1.5em;
   padding: 0.5em 1em;
   border-radius: 2em;
-  background-color: #682ae9;
   border: none;
-  color: #dbdbdb;
-  font-family: "Inter", sans-serif;
   -webkit-transition: 0.4s ease;
   transition: 0.4s ease;
   overflow: hidden;
+  margin-top: 1.333334em;
   cursor: pointer;
 }
 
