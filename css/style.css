@@ -236,6 +236,11 @@ footer::before {
   cursor: pointer;
 }
 
+.contact .container .form .submit-btn:disabled {
+  background: #190740;
+  pointer-events: none;
+}
+
 .contact .container .form .submit-btn::after {
   content: "";
   position: absolute;

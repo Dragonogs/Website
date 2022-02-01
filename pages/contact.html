@@ -45,35 +45,41 @@
 					<input
 						type="hidden"
 						name="_next"
-						value="http://127.0.0.1:5500/pages/success.html"
+						value="https://dragonogs.pages.dev/pages/success"
 					/>
 
 					<input
+						id="name"
 						type="text"
 						class="form-input"
 						name="Name"
 						placeholder="Name"
+						onkeyup="isEmpty()"
+						required
 					/>
 
 					<input
+						id="email"
 						type="email"
 						class="form-input"
 						name="Email"
 						placeholder="Email"
+						required
 					/>
 					<textarea
 						id="message"
 						class="form-input text-area"
 						name="Message"
 						placeholder="Message"
+						required
 					></textarea>
-					<button type="submit" class="submit-btn">Send</button>
+					<button id="submit-btn" type="submit" class="submit-btn" disabled>
+						Send
+					</button>
 				</form>
 			</div>
 		</main>
 
 		<footer><p class="footer">Dragonogs | 2022</p></footer>
-
-		<script src="./js/index.js"></script>
 	</body>
 </html>
