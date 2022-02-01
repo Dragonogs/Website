@@ -104,6 +104,21 @@
 			}
 		}
 	}
+	.contact {
+		.container {
+			.form {
+				background: darken($color: $clr-primary, $amount: 1%);
+				height: 600px;
+				width: 100%;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				border-radius: 1em;
+				margin: 20px auto;
+				padding: 2em 0;
+			}
+		}
+	}
 }
 
 @media screen and (max-width: 510px) {
@@ -142,6 +157,14 @@
 			}
 			.mail-icon {
 				font-size: 10em;
+			}
+		}
+	}
+	.contact {
+		.container {
+			.contact-title {
+				content: "contact";
+				font-size: 1.9em;
 			}
 		}
 	}
