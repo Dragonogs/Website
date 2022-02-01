@@ -1,0 +1,17 @@
+.success {
+	.container {
+		flex-direction: column;
+		align-items: center;
+		.success-title {
+			padding-top: 1em;
+			font-size: 6em;
+		}
+		.success-message {
+			font-size: 2em;
+		}
+		.mail-icon {
+			font-size: 20em;
+			color: $clr-accent;
+		}
+	}
+}

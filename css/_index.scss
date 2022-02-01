@@ -1,3 +1,5 @@
+@import "contact";
+@import "success";
 .socials-sidebar {
 	align-items: center;
 	height: fit-content;
@@ -90,7 +92,6 @@
 
 .projects {
 	height: fit-content;
-
 	background-color: $clr-primary;
 	.container {
 		height: 100%;

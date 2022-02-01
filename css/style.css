@@ -17,6 +17,10 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  min-height: calc(100vh - 200px);
+}
+
 strong {
   color: #682ae9;
   position: relative;
@@ -37,6 +41,7 @@ a {
   width: 80%;
   max-width: 70rem;
   margin: 0 auto;
+  min-height: calc(100vh - 200px);
 }
 
 .navbar {
@@ -102,25 +107,22 @@ a {
 
 footer {
   position: relative;
-  height: 200px;
-  width: 80%;
-  max-width: 70rem;
-  margin: 0 auto;
-  background: #0e1212;
-}
-
-footer .footer {
-  padding-top: 84px;
+  width: 100%;
+  padding: 40px;
   text-align: center;
 }
 
 footer::before {
   content: "";
-  height: 1px;
-  width: 100%;
   position: absolute;
-  background-color: #dbdbdb;
-  opacity: 0.1;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 70%;
+  background: #dbdbdb;
+  height: 1px;
+  opacity: 0.3;
 }
 
 .fade-in {
@@ -156,6 +158,129 @@ footer::before {
   -webkit-transform: translateX(0);
           transform: translateX(0);
   opacity: 1;
+}
+
+.contact .container {
+  height: calc(100vh - 200px);
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.contact .container .contact-title {
+  font-size: 3em;
+  display: inline;
+  width: 60%;
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+.contact .container .form {
+  background: #0c0f0f;
+  height: 60%;
+  width: 60%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 1em;
+  margin: 20px auto;
+  padding: 50px 0;
+}
+
+.contact .container .form .form-input {
+  font-family: "Inter", sans-serif;
+  font-size: 1em;
+  color: white;
+  background: rgba(104, 42, 233, 0.2);
+  width: 60%;
+  height: 50px;
+  border: none;
+  border-radius: 1em;
+  padding: 1em;
+  margin: 1em;
+}
+
+.contact .container .form .form-input:nth-child(4) {
+  margin-top: 0;
+}
+
+.contact .container .form .text-area {
+  height: 25%;
+  resize: none;
+}
+
+.contact .container .form .submit-btn {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5em;
+  padding: 0.5em 1em;
+  border-radius: 2em;
+  background-color: #682ae9;
+  border: none;
+  color: #dbdbdb;
+  font-family: "Inter", sans-serif;
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.contact .container .form .submit-btn::after {
+  content: "";
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #3e109d;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  z-index: -1;
+}
+
+.contact .container .form .submit-btn:hover, .contact .container .form .submit-btn:focus {
+  -webkit-transform: scale(1.07);
+          transform: scale(1.07);
+}
+
+.contact .container .form .submit-btn:hover::after, .contact .container .form .submit-btn:focus::after {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+
+.success .container {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.success .container .success-title {
+  padding-top: 1em;
+  font-size: 6em;
+}
+
+.success .container .success-message {
+  font-size: 2em;
+}
+
+.success .container .mail-icon {
+  font-size: 20em;
+  color: #682ae9;
 }
 
 .socials-sidebar {
@@ -413,6 +538,10 @@ footer::before {
   .projects .container ul li .projects-feature .feature-subtitle {
     font-size: 1.5em;
   }
+  .contact .container .contact-title {
+    content: "contact";
+    font-size: 2em;
+  }
 }
 
 @media screen and (max-width: 715px) {
@@ -486,6 +615,21 @@ footer::before {
   }
   .projects .container ul li .projects-feature .feature-subtitle {
     font-size: 1em;
+  }
+  .success .container {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .success .container .success-title {
+    font-size: 3em;
+    padding-top: 0;
+  }
+  .success .container .success-message {
+    font-size: 1em;
+  }
+  .success .container .mail-icon {
+    font-size: 10em;
   }
 }
 /*# sourceMappingURL=style.css.map */

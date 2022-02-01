@@ -35,6 +35,21 @@
 			}
 		}
 	}
+	.contact {
+		.container {
+			.contact-title {
+				content: "contact";
+				font-size: 2em;
+			}
+			.form {
+				.form-input {
+				}
+
+				.text-area {
+				}
+			}
+		}
+	}
 }
 
 @media screen and (max-width: 715px) {
@@ -119,6 +134,21 @@
 						}
 					}
 				}
+			}
+		}
+	}
+	.success {
+		.container {
+			justify-content: center;
+			.success-title {
+				font-size: 3em;
+				padding-top: 0;
+			}
+			.success-message {
+				font-size: 1em;
+			}
+			.mail-icon {
+				font-size: 10em;
 			}
 		}
 	}
