@@ -12,6 +12,7 @@
 
 html {
   scrollbar-width: none;
+  overflow-x: hidden;
 }
 
 body {
@@ -46,6 +47,61 @@ a {
   max-width: 70rem;
   margin: 0 auto;
   min-height: calc(100vh - 200px);
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #682ae9;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
+  -webkit-transform: translateX(200vw);
+          transform: translateX(200vw);
+}
+
+.mobile-nav ul {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+  width: 100%;
+}
+
+.mobile-nav ul li {
+  padding: 2em 0;
+}
+
+.mobile-nav ul li .mobile-nav-link {
+  font-size: 3em;
+  padding: 0.3em;
+}
+
+.mobile-nav ul li .mobile-nav-link:hover {
+  background: #0e1212;
+  border-radius: 50px;
+}
+
+.mobile-nav ul li button {
+  background: transparent;
+  border: transparent;
+  color: #dbdbdb;
+  padding: 1em;
+  cursor: pointer;
 }
 
 .navbar {
@@ -98,6 +154,11 @@ a {
   font-size: 2em;
   display: none;
   margin: 0 0.75em;
+  cursor: pointer;
+}
+
+.navbar ul li .dropdown-btn:hover {
+  color: #682ae9;
 }
 
 .navbar ul li .active {
@@ -627,6 +688,9 @@ footer::before {
     border-radius: 1em;
     margin: 20px auto;
     padding: 2em 0;
+  }
+  .contact .container .form .form-input {
+    width: 80%;
   }
 }
 
