@@ -1,8 +1,6 @@
 @import "contact";
 @import "success";
 .socials-sidebar {
-	align-items: center;
-	height: fit-content;
 	font-size: 3em;
 	color: $clr-accent;
 	ul {
@@ -10,7 +8,7 @@
 		flex-direction: column;
 		align-items: center;
 		li {
-			padding: 0.25em 0;
+			padding: 0.25em;
 			a {
 				transition: 0.3s ease;
 				opacity: 0.2;
@@ -177,4 +175,15 @@
 .project-website {
 	background-image: url(../img/website@2x.jpg);
 	background-size: cover;
+}
+
+.about {
+	.container {
+		flex-direction: column;
+		.main-para {
+			&:nth-child(odd) {
+				margin-left: auto;
+			}
+		}
+	}
 }

@@ -125,8 +125,18 @@
 }
 
 @media screen and (max-width: 510px) {
+	.hero {
+		.container {
+			flex-direction: column;
+			justify-content: center;
+		}
+	}
 	.socials-sidebar {
-		display: none;
+		ul {
+			flex-direction: row;
+			justify-content: space-between;
+			margin-top: 1em;
+		}
 	}
 	.projects {
 		.container {
