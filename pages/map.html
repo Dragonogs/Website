@@ -104,7 +104,14 @@
               </select>
             </div>
             <div class="guess-box">
-              <input type="text" id="input" name="input" />
+              <input
+                placeholder="Enter city name"
+                type="text"
+                id="input"
+                name="input"
+                class=""
+              />
+
               <button
                 id="guessBtn"
                 class="guess button"
@@ -113,6 +120,7 @@
               >
                 Guess
               </button>
+              <p class="error-prompt"></p>
             </div>
             <button class="reset button" onClick="reset()">reset</button>
           </div>

@@ -42,6 +42,11 @@ function initMap() {
   fetchData(); // Call fetchData() to fetch country data and display it
 }
 
+function displayError(message) {
+  document.getElementById("input").classList.add("error");
+  document.querySelector(".error-prompt").textContent = message;
+}
+
 //Function to make a guess
 function guess() {
   // Get radius selected
@@ -52,7 +57,9 @@ function guess() {
   const geocoder = new google.maps.Geocoder();
   geocoder.geocode({ address: city }, function (results, status) {
     if (status !== "OK") {
-      alert("Invalid input. Please enter a valid place name.");
+      // alert("Invalid input. Please enter a valid place name.");
+      displayError("Invalid input. Please enter a valid place name.");
+      console.log(results);
     } else {
       console.log(results);
       const locality = results[0].types.includes("locality");
@@ -65,9 +72,12 @@ function guess() {
         const lng = results[0].geometry.location.lng();
         const latlng = `${lng}, ${lat}`;
         if (guesses.includes(latlng)) {
-          alert("guess already made");
+          displayError("Guess was already made.");
+          // alert("guess already made");
         } else {
           guesses.push(latlng);
+          document.getElementById("input").classList.remove("error");
+          document.querySelector(".error-prompt").textContent = "";
           // Create a circle around the city with a selected radius in KM
           new google.maps.Circle({
             center: { lat, lng },
@@ -92,7 +102,8 @@ function guess() {
           countryDisplay();
         }
       } else {
-        alert("Guess was not a town or city");
+        // alert("Guess was not a town or city");
+        displayError("Guess was not a town or city.");
         console.log(results);
       }
     }

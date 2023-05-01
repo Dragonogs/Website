@@ -1,6 +1,8 @@
 $clr-primary: #0e1212;
 $clr-secondary: #dbdbdb;
 $clr-accent: #682ae9;
+$clr-error: rgb(255, 82, 82);
+$clr-success: rgb(0, 175, 0);
 
 $ff-primary: "Inter", sans-serif;
 $ff-secondary: "Vujahday Script", cursive;
@@ -75,4 +77,12 @@ a {
   font-weight: bolder;
   cursor: pointer;
   display: flex;
+  &:hover {
+    background-color: rgba($color: inherit, $alpha: 0.5);
+  }
+}
+
+.error {
+  background-color: $clr-error;
+  color: $clr-primary;
 }

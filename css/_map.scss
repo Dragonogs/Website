@@ -26,14 +26,18 @@
             border-radius: 0.5rem 0 0 0.5rem;
           }
           .guess {
-            background-color: #682ae9;
+            background-color: $clr-accent;
             color: inherit;
             border-radius: 0 0.5rem 0.5rem 0;
+          }
+          .error-prompt {
+            padding-left: 1em;
+            color: $clr-error;
           }
         }
 
         .reset {
-          background-color: rgb(255, 82, 82);
+          background-color: $clr-error;
         }
       }
       .map {
@@ -46,12 +50,12 @@
       padding: 1em;
       .completed {
         .countries-complete {
-          color: rgb(0, 175, 0);
+          color: $clr-success;
         }
       }
       .uncompleted {
         .countries-uncomplete {
-          color: rgb(255, 82, 82);
+          color: $clr-error;
         }
       }
     }
