@@ -1,0 +1,59 @@
+.site-wrap {
+  width: 80%;
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: calc(100vh - 200px);
+  .game-wrapper {
+    display: flex;
+    .map-wrap {
+      .controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(14, 18, 18);
+        padding: 1em 0;
+        .guess-box {
+          width: 100%;
+          padding-left: 1em;
+          align-items: center;
+          display: flex;
+          font-size: 1.25rem;
+          #input {
+            padding: 0.5em;
+            width: 50%;
+            border: none;
+            font-size: 1em;
+            border-radius: 0.5rem 0 0 0.5rem;
+          }
+          .guess {
+            background-color: #682ae9;
+            color: inherit;
+            border-radius: 0 0.5rem 0.5rem 0;
+          }
+        }
+
+        .reset {
+          background-color: rgb(255, 82, 82);
+        }
+      }
+      .map {
+        height: 60vh;
+        width: 60vw;
+      }
+    }
+    .complete {
+      font-size: 1.5rem;
+      padding: 1em;
+      .completed {
+        .countries-complete {
+          color: rgb(0, 175, 0);
+        }
+      }
+      .uncompleted {
+        .countries-uncomplete {
+          color: rgb(255, 82, 82);
+        }
+      }
+    }
+  }
+}

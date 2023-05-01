@@ -1,110 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
-		<link href="./css/style.css" rel="stylesheet" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Vujahday+Script&display=swap"
-			rel="stylesheet"
-		/>
-		<script
-			src="https://kit.fontawesome.com/7a12354e0f.js"
-			crossorigin="anonymous"
-		></script>
-		<script src="./js/index.js" defer></script> 
-		<title>Home | Dragonogs</title>
-	</head>
-	<body id="top">
-		<nav class="navbar">
-			<a href="./index.html"><div class="brand">Dragon<strong>ogs</strong></div></a>
-			<ul>
-				<li><a href="#top" class="nav-link">Home</a></li>
-				<li><a href="#projects" class="nav-link">Projects</a></li>
-				<li><a href="./pages/about.html" class="nav-link">About</a></li>
-				<li><a href="./pages/contact.html" class="nav-link">Contact</a></li>
-				<li><button class="dropdown-btn" onclick="document.getElementById('mobile-nav').style.transform = 'translateX(0)'"><i class="fas fa-bars"></i></button></li>	
-			</ul>
-		</nav>
-		<nav id="mobile-nav" class="mobile-nav move-right">
-			<ul>
-				<li><a href="#top" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'">Home</a></li>
-				<li><a href="#projects" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'">Projects</a></li>
-				<li><a href="./pages/about.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'">About</a></li>
-				<li><a href="./pages/contact.html" class="mobile-nav-link" onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'">Contact</a></li>
-				<li><button class="dropdown-btn" onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"><i class="fa fa-times mobile-nav-link"></i></button></li>	
-			</ul>
-		</nav>
-		<main>
-			<header class="section hero">
-				<div class="container flex">
-					<div class="hero-content">
-						<h1 class="hero-title">Dragon<strong>ogs</strong></h1>
-						<!-- <h2 class="hero-subtitle">Oliver G Shipley</h2> -->
-						<a href="#projects" class="hero-CTA-btn"
-							>More<i class="fas fa-chevron-right"></i>
-						</a>
-					</div>
-					<!-- <div class="scroll-arrow">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
+    <link href="./css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Vujahday+Script&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/7a12354e0f.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/index.js" defer></script>
+    <title>Home | Dragonogs</title>
+  </head>
+  <body id="top">
+    <nav class="navbar">
+      <a href="./index.html"
+        ><div class="brand">Dragon<strong>ogs</strong></div></a
+      >
+      <ul>
+        <li><a href="#top" class="nav-link">Home</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="./pages/about.html" class="nav-link">About</a></li>
+        <li><a href="./pages/contact.html" class="nav-link">Contact</a></li>
+        <li>
+          <button
+            class="dropdown-btn"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(0)'"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <nav id="mobile-nav" class="mobile-nav move-right">
+      <ul>
+        <li>
+          <a
+            href="#top"
+            class="mobile-nav-link"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="#projects"
+            class="mobile-nav-link"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+            >Projects</a
+          >
+        </li>
+        <li>
+          <a
+            href="./pages/about.html"
+            class="mobile-nav-link"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="./pages/contact.html"
+            class="mobile-nav-link"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+            >Contact</a
+          >
+        </li>
+        <li>
+          <button
+            class="dropdown-btn"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+          >
+            <i class="fa fa-times mobile-nav-link"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <header class="section hero">
+        <div class="container flex">
+          <div class="hero-content">
+            <h1 class="hero-title">Dragon<strong>ogs</strong></h1>
+            <!-- <h2 class="hero-subtitle">Oliver G Shipley</h2> -->
+            <a href="#projects" class="hero-CTA-btn"
+              >More<i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+          <!-- <div class="scroll-arrow">
 						<a href="#projects" class="arrow-link"
 							>scroll<i class="fa fa-long-arrow-down" aria-hidden="true"></i
 						></a>
 					</div> -->
-					<div class="socials-sidebar">
-						<ul>
-							<li>
-								<a href="https://twitter.com/dragonogs"
-									><i class="fab fa-twitter"></i
-								></a>
-							</li>
-							<li>
-								<a href="https://twitch.tv/dragonogs"
-									><i class="fab fa-twitch"></i
-								></a>
-							</li>
-							<li>
-								<a
-									href="https://www.youtube.com/channel/UCIfb2LdrSk6B2lOiqmjEM9Q/videos"
-									><i class="fab fa-youtube"></i
-								></a>
-							</li>
-							<li>
-								<a href="https://steamcommunity.com/id/Dragonogs"
-									><i class="fab fa-steam"></i
-								></a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</header>
-			<section class="section projects" id="projects">
-				<div class="container flex">
-					<h2 class="projects-title fade-in">Latest Projects</h1>
-					<ul>
-						<li class="fade-in from-left">
-							<a href="https://github.com/Dragonogs/Website" class="projects-feature project-website">
-								<h3 class="feature-title">Dragonogs.pages.dev</h2>
-								<p class="feature-subtitle">My website</p>
-							</a>
-						</li>
-						<li class="fade-in from-right">
-							<a href="./pages/susbot.html" class="projects-feature project-susbot">
-								<h3 class="feature-title">Susbot</h2>
-								<p class="feature-subtitle">Discord bot</p>
-							</a>
-						</li>
-
-					</ul>
-				</div>
-			
-			</section>
-		</main>
-		<footer><p class="footer">Dragonogs | 2022</p></footer>
-
-		
-	</body>
+          <div class="socials-sidebar">
+            <ul>
+              <li>
+                <a href="https://twitter.com/dragonogs"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://twitch.tv/dragonogs"
+                  ><i class="fab fa-twitch"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/channel/UCIfb2LdrSk6B2lOiqmjEM9Q/videos"
+                  ><i class="fab fa-youtube"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://steamcommunity.com/id/Dragonogs"
+                  ><i class="fab fa-steam"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <section class="section projects" id="projects">
+        <div class="container flex">
+          <h2 class="projects-title fade-in">Latest Projects</h2>
+          <ul>
+            <li class="fade-in from-left">
+              <a
+                href="https://github.com/Dragonogs/Website"
+                class="projects-feature project-website"
+              >
+                <h3 class="feature-title">Dragonogs.pages.dev</h3>
+                <p class="feature-subtitle">My website</p>
+              </a>
+            </li>
+            <li class="fade-in from-right">
+              <a href="./pages/map.html" class="projects-feature project-map">
+                <h3 class="feature-title">Map game</h3>
+                <p class="feature-subtitle">City memorisation game</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <footer><p class="footer">Dragonogs | 2022</p></footer>
+  </body>
 </html>
