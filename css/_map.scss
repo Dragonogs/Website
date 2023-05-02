@@ -56,6 +56,9 @@
       .uncompleted {
         .countries-uncomplete {
           color: $clr-error;
+          .fi {
+            border-radius: 3px;
+          }
         }
       }
     }

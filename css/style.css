@@ -263,6 +263,9 @@ footer::before {
 .site-wrap .game-wrapper .complete .uncompleted .countries-uncomplete {
   color: rgb(255, 82, 82);
 }
+.site-wrap .game-wrapper .complete .uncompleted .countries-uncomplete .fi {
+  border-radius: 3px;
+}
 
 .contact .container {
   flex-direction: column;
@@ -596,7 +599,7 @@ footer::before {
     width: 100%;
   }
   .site-wrap .game-wrapper .complete {
-    padding: 0.5em 0 0 0;
+    padding: 0.5em 0 0.5em 0;
   }
   .site-wrap .game-wrapper .complete .completed {
     font-size: 0.75em;
