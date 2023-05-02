@@ -8,7 +8,7 @@
     <script defer src="../js/map.js"></script>
     <script
       defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQrNhIo_HeEoly2f82JP8q-7oUcA_W7NE&libraries=places&callback=initMap"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIO3DY0tteP_zL6id9JUwByBRtD3jGal4&libraries=places&callback=initMap"
     ></script>
     <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
     <link href="../css/style.css" rel="stylesheet" />
@@ -108,22 +108,24 @@
               </select>
             </div>
             <div class="guess-box">
-              <input
-                placeholder="Enter city name"
-                type="text"
-                id="input"
-                name="input"
-                class=""
-              />
+              <div class="input-wrap">
+                <input
+                  placeholder="Enter city name"
+                  type="text"
+                  id="input"
+                  name="input"
+                  class=""
+                />
 
-              <button
-                id="guessBtn"
-                class="guess button"
-                type="submit"
-                onClick="guess()"
-              >
-                Guess
-              </button>
+                <button
+                  id="guessBtn"
+                  class="guess button"
+                  type="submit"
+                  onClick="guess()"
+                >
+                  Guess
+                </button>
+              </div>
               <p class="error-prompt"></p>
               <button class="reset button" onClick="reset()">reset</button>
             </div>

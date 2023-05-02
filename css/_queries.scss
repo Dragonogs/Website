@@ -68,6 +68,12 @@
           .guess-box {
             padding: 0;
             display: flex;
+            .input-wrap {
+              width: 100%;
+              .input {
+                width: 100%;
+              }
+            }
           }
 
           .reset {

@@ -59,9 +59,7 @@ function guess() {
     if (status !== "OK") {
       // alert("Invalid input. Please enter a valid place name.");
       displayError("Invalid input. Please enter a valid place name.");
-      console.log(results);
     } else {
-      console.log(results);
       const locality = results[0].types.includes("locality");
       const administrative = results[0].types.includes(
         "administrative_area_level_3"
@@ -104,7 +102,6 @@ function guess() {
       } else {
         // alert("Guess was not a town or city");
         displayError("Guess was not a town or city.");
-        console.log(results);
       }
     }
   });
@@ -118,7 +115,6 @@ function countryDisplay() {
     // if country already covered skip
     if (coveredCountries.includes(countryID)) {
       requiredCountries.filter((a) => a !== countryID);
-      console.log("removed", countryID);
     }
     // Else push country to array
     else {
@@ -136,23 +132,9 @@ function countryDisplay() {
 
   document.querySelector(".countries-uncomplete").innerHTML =
     requiredFlags.join(" ");
-  console.log(requiredFlags);
 
   document.querySelector(".countries-complete").innerHTML =
     coveredFlags.join(" ");
-  console.log(coveredFlags);
-
-  // document.querySelector(".countries-uncomplete").textContent =
-  //   requiredCountries.join(", ");
-
-  // document.querySelector(".countries-complete").textContent =
-  //   coveredCountries.join(", ");
-
-  if (COUNTRY_DATA.length / 2 > coveredCountries.length) {
-    console.log("less than half covered");
-  } else {
-    console.log("over half covered");
-  }
 }
 
 // Function to check if guess covers whole country
@@ -163,15 +145,8 @@ function checkCoverage(tCircle) {
   union = turf.union(circlePoly, union);
   COUNTRY_DATA.forEach((country) => {
     let countryID = country.properties.ISO2.toLowerCase();
-    if (countryID == "bg") {
-      console.log(country);
-    }
     // if country already covered log already covered
-    if (coveredCountries.includes(countryID)) {
-      console.log(`${countryID} already covered`);
-    }
-    // else calc area
-    else {
+    if (!coveredCountries.includes(countryID)) {
       const sect = turf.intersect(union, country);
       // If section covers country calc area
       if (sect !== null) {
@@ -183,22 +158,16 @@ function checkCoverage(tCircle) {
         if (sectArea == 64456758251 && countryID == "lv") {
           sectArea = 64456758494;
         }
-        console.log(`${countryID} area: `, countryArea);
-        console.log(`${countryID} section area: `, sectArea);
         // If country is fully covered by section
         if (sectArea >= countryArea) {
           // if country already covered skip else print country
           if (!coveredCountries.includes(countryID)) {
             coveredCountries.push(countryID);
-            console.log(`${countryID} fully covered`);
           }
         }
         if (sectArea < countryArea) {
           const percentCovered = (sectArea / countryArea) * 100;
-          console.log(`${countryID} ${percentCovered.toFixed(2)}% covered`);
         }
-      } else {
-        // console.log(`${countryID} not covered`);
       }
     }
   });
