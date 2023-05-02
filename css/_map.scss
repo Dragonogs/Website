@@ -31,7 +31,7 @@
             border-radius: 0 0.5rem 0.5rem 0;
           }
           .error-prompt {
-            padding-left: 1em;
+            padding-inline: 1em;
             color: $clr-error;
           }
         }
@@ -60,11 +60,4 @@
       }
     }
   }
-}
-
-@media screen and (max-width: 1300px) {
-}
-@media screen and (max-width: 1050px) {
-}
-@media screen and (max-width: 715px) {
 }

@@ -68,7 +68,7 @@ a {
   display: flex;
 }
 .button:hover {
-  opacity: 0.5;
+  transform: scale(1.07);
 }
 
 .error {
@@ -205,6 +205,63 @@ footer::before {
 .from-right.appear {
   transform: translateX(0);
   opacity: 1;
+}
+
+.site-wrap {
+  width: 80%;
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: calc(100vh - 200px);
+}
+.site-wrap .game-wrapper {
+  display: flex;
+}
+.site-wrap .game-wrapper .map-wrap .controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(14, 18, 18);
+  padding: 1em 0;
+}
+.site-wrap .game-wrapper .map-wrap .controls .guess-box {
+  width: 100%;
+  padding-left: 1em;
+  align-items: center;
+  display: flex;
+  font-size: 1.25rem;
+}
+.site-wrap .game-wrapper .map-wrap .controls .guess-box #input {
+  padding: 0.5em;
+  width: 50%;
+  border: none;
+  font-size: 1em;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+.site-wrap .game-wrapper .map-wrap .controls .guess-box .guess {
+  background-color: #682ae9;
+  color: inherit;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+.site-wrap .game-wrapper .map-wrap .controls .guess-box .error-prompt {
+  padding-inline: 1em;
+  color: rgb(255, 82, 82);
+}
+.site-wrap .game-wrapper .map-wrap .controls .reset {
+  background-color: rgb(255, 82, 82);
+}
+.site-wrap .game-wrapper .map-wrap .map {
+  height: 60vh;
+  width: 60vw;
+}
+.site-wrap .game-wrapper .complete {
+  font-size: 1.5rem;
+  padding: 1em;
+}
+.site-wrap .game-wrapper .complete .completed .countries-complete {
+  color: rgb(0, 175, 0);
+}
+.site-wrap .game-wrapper .complete .uncompleted .countries-uncomplete {
+  color: rgb(255, 82, 82);
 }
 
 .contact .container {
@@ -479,63 +536,6 @@ footer::before {
   margin-left: auto;
 }
 
-.site-wrap {
-  width: 80%;
-  max-width: 100%;
-  margin: 0 auto;
-  min-height: calc(100vh - 200px);
-}
-.site-wrap .game-wrapper {
-  display: flex;
-}
-.site-wrap .game-wrapper .map-wrap .controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: rgb(14, 18, 18);
-  padding: 1em 0;
-}
-.site-wrap .game-wrapper .map-wrap .controls .guess-box {
-  width: 100%;
-  padding-left: 1em;
-  align-items: center;
-  display: flex;
-  font-size: 1.25rem;
-}
-.site-wrap .game-wrapper .map-wrap .controls .guess-box #input {
-  padding: 0.5em;
-  width: 50%;
-  border: none;
-  font-size: 1em;
-  border-radius: 0.5rem 0 0 0.5rem;
-}
-.site-wrap .game-wrapper .map-wrap .controls .guess-box .guess {
-  background-color: #682ae9;
-  color: inherit;
-  border-radius: 0 0.5rem 0.5rem 0;
-}
-.site-wrap .game-wrapper .map-wrap .controls .guess-box .error-prompt {
-  padding-left: 1em;
-  color: rgb(255, 82, 82);
-}
-.site-wrap .game-wrapper .map-wrap .controls .reset {
-  background-color: rgb(255, 82, 82);
-}
-.site-wrap .game-wrapper .map-wrap .map {
-  height: 60vh;
-  width: 60vw;
-}
-.site-wrap .game-wrapper .complete {
-  font-size: 1.5rem;
-  padding: 1em;
-}
-.site-wrap .game-wrapper .complete .completed .countries-complete {
-  color: rgb(0, 175, 0);
-}
-.site-wrap .game-wrapper .complete .uncompleted .countries-uncomplete {
-  color: rgb(255, 82, 82);
-}
-
 @media screen and (max-width: 1300px) {
   .projects .container ul {
     width: 70%;
@@ -561,6 +561,48 @@ footer::before {
   .contact .container .contact-title {
     content: "contact";
     font-size: 2em;
+  }
+}
+@media screen and (max-width: 975px) {
+  .site-wrap {
+    width: 80%;
+    max-width: 100%;
+    margin: 0 auto;
+    min-height: calc(100vh - 200px);
+  }
+  .site-wrap .map-title {
+    font-size: 1.5em;
+  }
+  .site-wrap .game-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .site-wrap .game-wrapper .map-wrap .controls {
+    flex-direction: column;
+    align-items: start;
+    padding: 0.75em 0;
+  }
+  .site-wrap .game-wrapper .map-wrap .controls .difficulty {
+    padding-bottom: 0.5em;
+  }
+  .site-wrap .game-wrapper .map-wrap .controls .guess-box {
+    padding: 0;
+    display: flex;
+  }
+  .site-wrap .game-wrapper .map-wrap .controls .reset {
+    display: none;
+  }
+  .site-wrap .game-wrapper .map-wrap .map {
+    width: 100%;
+  }
+  .site-wrap .game-wrapper .complete {
+    padding: 0.5em 0 0 0;
+  }
+  .site-wrap .game-wrapper .complete .completed {
+    font-size: 0.75em;
+  }
+  .site-wrap .game-wrapper .complete .uncompleted {
+    font-size: 0.75em;
   }
 }
 @media screen and (max-width: 715px) {

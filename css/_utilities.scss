@@ -78,7 +78,7 @@ a {
   cursor: pointer;
   display: flex;
   &:hover {
-    background-color: rgba($color: inherit, $alpha: 0.5);
+    transform: scale(1.07);
   }
 }
 
