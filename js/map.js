@@ -126,11 +126,27 @@ function countryDisplay() {
     }
   });
 
-  document.querySelector(".countries-uncomplete").textContent =
-    requiredCountries.join(", ");
+  const requiredFlags = requiredCountries.map(
+    (id) => `<span class="fi fi-${id}"></span>`
+  );
 
-  document.querySelector(".countries-complete").textContent =
-    coveredCountries.join(", ");
+  const coveredFlags = coveredCountries.map(
+    (id) => `<span class="fi fi-${id}"></span>`
+  );
+
+  document.querySelector(".countries-uncomplete").innerHTML =
+    requiredFlags.join(" ");
+  console.log(requiredFlags);
+
+  document.querySelector(".countries-complete").innerHTML =
+    coveredFlags.join(" ");
+  console.log(coveredFlags);
+
+  // document.querySelector(".countries-uncomplete").textContent =
+  //   requiredCountries.join(", ");
+
+  // document.querySelector(".countries-complete").textContent =
+  //   coveredCountries.join(", ");
 
   if (COUNTRY_DATA.length / 2 > coveredCountries.length) {
     console.log("less than half covered");
@@ -174,7 +190,7 @@ function checkCoverage(tCircle) {
           // if country already covered skip else print country
           if (!coveredCountries.includes(countryID)) {
             coveredCountries.push(countryID);
-            console.log(`${countryID} 100% covered`);
+            console.log(`${countryID} fully covered`);
           }
         }
         if (sectArea < countryArea) {
