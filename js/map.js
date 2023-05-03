@@ -42,33 +42,48 @@ function initMap() {
   fetchData(); // Call fetchData() to fetch country data and display it
 }
 
-function displayError(message) {
-  document.getElementById("input").classList.add("error");
-  document.querySelector(".error-prompt").textContent = message;
-}
-
 //Function to make a guess
 function guess() {
   // Get radius selected
   let rad = document.getElementById("radius").value;
   // Get the city name from the input
-  let city = document.getElementById("input").value;
+  let city = document.getElementById("input").value.toLowerCase();
   // Use the Google Maps Geocoding API to get the city's coordinates
   const geocoder = new google.maps.Geocoder();
   geocoder.geocode({ address: city }, function (results, status) {
+    if (city == "liverpool") {
+      status = "OK";
+      results = [
+        {
+          geometry: { location: { lat: 53.4084, lng: -2.9916 } },
+          types: ["locality"],
+        },
+      ];
+    }
     if (status !== "OK") {
       // alert("Invalid input. Please enter a valid place name.");
-      displayError("Invalid input. Please enter a valid place name.");
+      displayError("Input not vaild location.");
     } else {
+      console.log(results);
       const locality = results[0].types.includes("locality");
       const administrative = results[0].types.includes(
         "administrative_area_level_3"
       );
       if (locality || administrative) {
+        let lat;
+        let lng;
+        let latlng;
+
+        if (city == "liverpool") {
+          lat = results[0].geometry.location.lat;
+          lng = results[0].geometry.location.lng;
+          latlng = `${lng}, ${lat}`;
+        } else {
+          lat = results[0].geometry.location.lat();
+          lng = results[0].geometry.location.lng();
+          latlng = `${lng}, ${lat}`;
+        }
         // Get the latitude and longitude of the first result
-        const lat = results[0].geometry.location.lat();
-        const lng = results[0].geometry.location.lng();
-        const latlng = `${lng}, ${lat}`;
         if (guesses.includes(latlng)) {
           displayError("Guess was already made.");
           // alert("guess already made");
@@ -77,21 +92,12 @@ function guess() {
           document.getElementById("input").classList.remove("error");
           document.querySelector(".error-prompt").textContent = "";
           // Create a circle around the city with a selected radius in KM
-          new google.maps.Circle({
-            center: { lat, lng },
-            radius: rad * 1000, //Times 1000 to convert to kilometer
-            map,
-            strokeColor: "#4a69c8 ",
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: "#5c84ff",
-            fillOpacity: 0.7,
-          });
+          plotCircle(lat, lng);
           // Make a turf circle with the guess location
           const center = [lng, lat];
           const radius = rad;
           const options = {
-            steps: 50,
+            steps: 500,
             units: "kilometers",
             properties: { foo: "bar" },
           };
@@ -106,6 +112,25 @@ function guess() {
     }
   });
   document.getElementById("input").value = "";
+}
+
+function plotCircle(lat, lng) {
+  let rad = document.getElementById("radius").value;
+  new google.maps.Circle({
+    center: { lat, lng },
+    radius: rad * 1000, //Times 1000 to convert to kilometer
+    map,
+    strokeColor: "#4a69c8 ",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#5c84ff",
+    fillOpacity: 0.7,
+  });
+}
+
+function displayError(message) {
+  document.getElementById("input").classList.add("error");
+  document.querySelector(".error-prompt").textContent = message;
 }
 
 function countryDisplay() {
