@@ -59,6 +59,7 @@ function guess() {
       status = "OK";
       results = [
         {
+          address_components: [{ long_name: "Liverpool" }],
           geometry: { location: { lat: 53.4084, lng: -2.9916 } },
           types: ["locality"],
         },
@@ -83,12 +84,13 @@ function guess() {
           lat = results[0].geometry.location.lat;
           lng = results[0].geometry.location.lng;
           latlng = `${lng}, ${lat}`;
-          guess = city;
+          guess = results[0].address_components[0].long_name;
         } else {
+          console.log(results);
           lat = results[0].geometry.location.lat();
           lng = results[0].geometry.location.lng();
           latlng = `${lng}, ${lat}`;
-          guess = city;
+          guess = results[0].address_components[0].long_name;
         }
         // Get the latitude and longitude of the first result
 
