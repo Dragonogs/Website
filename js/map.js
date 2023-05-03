@@ -1,8 +1,8 @@
 // Define variables
 let map;
-let guesses = [];
+let guesses = JSON.parse(localStorage.getItem("guesses")) || [];
 let tCircleArray = [];
-let coordArray = [];
+let circles = JSON.parse(localStorage.getItem("circles")) || [];
 let nullIsland = turf.circle([0, 0], 1, {
   steps: 5,
   units: "kilometers",
@@ -10,7 +10,7 @@ let nullIsland = turf.circle([0, 0], 1, {
 });
 let union = turf.polygon(nullIsland.geometry.coordinates);
 
-let coveredCountries = [];
+let coveredCountries = JSON.parse(localStorage.getItem("covered")) || [];
 let COUNTRY_DATA;
 
 const url = "../data/map.geojson";
@@ -38,6 +38,10 @@ function initMap() {
         stylers: [{ visibility: "off" }],
       },
     ],
+  });
+  // Plot circles from localstorage
+  circles.forEach((latlng) => {
+    plotCircle(latlng.lat, latlng.lng);
   });
   fetchData(); // Call fetchData() to fetch country data and display it
 }
@@ -73,22 +77,30 @@ function guess() {
         let lat;
         let lng;
         let latlng;
+        let guess;
 
         if (city == "liverpool") {
           lat = results[0].geometry.location.lat;
           lng = results[0].geometry.location.lng;
           latlng = `${lng}, ${lat}`;
+          guess = city;
         } else {
           lat = results[0].geometry.location.lat();
           lng = results[0].geometry.location.lng();
           latlng = `${lng}, ${lat}`;
+          guess = city;
         }
         // Get the latitude and longitude of the first result
-        if (guesses.includes(latlng)) {
+
+        if (guesses.includes(guess)) {
           displayError("Guess was already made.");
           // alert("guess already made");
         } else {
-          guesses.push(latlng);
+          guesses.push(guess);
+          circles.push({ lat: lat, lng: lng });
+          localStorage.setItem("guesses", JSON.stringify(guesses));
+          localStorage.setItem("circles", JSON.stringify(circles));
+          console.log(circles);
           document.getElementById("input").classList.remove("error");
           document.querySelector(".error-prompt").textContent = "";
           // Create a circle around the city with a selected radius in KM
@@ -134,20 +146,21 @@ function displayError(message) {
 }
 
 function countryDisplay() {
-  let requiredCountries = [];
+  let remainingCountries = [];
   COUNTRY_DATA.forEach((country) => {
     const countryID = country.properties.ISO2.toLowerCase();
     // if country already covered skip
     if (coveredCountries.includes(countryID)) {
-      requiredCountries.filter((a) => a !== countryID);
+      remainingCountries.filter((a) => a !== countryID);
     }
     // Else push country to array
     else {
-      requiredCountries.push(countryID);
+      remainingCountries.push(countryID);
+      localStorage.setItem("remaining", JSON.stringify(remainingCountries));
     }
   });
 
-  const requiredFlags = requiredCountries.map(
+  const remainingFlags = remainingCountries.map(
     (id) => `<span class="fi fi-${id}"></span>`
   );
 
@@ -156,7 +169,7 @@ function countryDisplay() {
   );
 
   document.querySelector(".countries-uncomplete").innerHTML =
-    requiredFlags.join(" ");
+    remainingFlags.join(" ");
 
   document.querySelector(".countries-complete").innerHTML =
     coveredFlags.join(" ");
@@ -188,6 +201,7 @@ function checkCoverage(tCircle) {
           // if country already covered skip else print country
           if (!coveredCountries.includes(countryID)) {
             coveredCountries.push(countryID);
+            localStorage.setItem("covered", JSON.stringify(coveredCountries));
           }
         }
         if (sectArea < countryArea) {
@@ -201,6 +215,8 @@ function checkCoverage(tCircle) {
 //Function to reload the page/reset
 function reset() {
   // initMap()
+  localStorage.clear();
+
   location.reload();
 }
 
