@@ -52,6 +52,9 @@
       }
     }
     .complete {
+      .fi {
+        border-radius: 3px;
+      }
       font-size: 1.5rem;
       padding: 1em;
       .completed {
@@ -62,9 +65,6 @@
       .uncompleted {
         .countries-uncomplete {
           color: $clr-error;
-          .fi {
-            border-radius: 3px;
-          }
         }
       }
     }

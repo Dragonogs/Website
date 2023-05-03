@@ -262,14 +262,14 @@ footer::before {
   font-size: 1.5rem;
   padding: 1em;
 }
+.site-wrap .game-wrapper .complete .fi {
+  border-radius: 3px;
+}
 .site-wrap .game-wrapper .complete .completed .countries-complete {
   color: rgb(0, 175, 0);
 }
 .site-wrap .game-wrapper .complete .uncompleted .countries-uncomplete {
   color: rgb(255, 82, 82);
-}
-.site-wrap .game-wrapper .complete .uncompleted .countries-uncomplete .fi {
-  border-radius: 3px;
 }
 
 .contact .container {
