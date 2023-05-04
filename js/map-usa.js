@@ -13,7 +13,7 @@ let union = turf.polygon(nullIsland.geometry.coordinates);
 let coveredCountries = JSON.parse(localStorage.getItem("covered")) || [];
 let COUNTRY_DATA;
 
-const url = "../data/map.geojson";
+const url = "../data/usa-map.geojson";
 
 // Get country GEOJson data
 async function fetchData() {
@@ -27,8 +27,8 @@ async function fetchData() {
 function initMap() {
   // Set initial map center
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 50.43683767611142, lng: 11.646820736967626 },
-    zoom: 5,
+    center: { lat: 37.82832118183827, lng: -98.57949042881638 },
+    zoom: 4.5,
     streetViewControl: false,
     mapTypeControl: false,
     styles: [
@@ -54,77 +54,70 @@ function guess() {
   let city = document.getElementById("input").value.toLowerCase();
   // Use the Google Maps Geocoding API to get the city's coordinates
   const geocoder = new google.maps.Geocoder();
-  geocoder.geocode({ address: city }, function (results, status) {
-    if (city == "liverpool") {
-      status = "OK";
-      results = [
-        {
-          address_components: [{ long_name: "Liverpool" }],
-          geometry: { location: { lat: 53.4084, lng: -2.9916 } },
-          types: ["locality"],
-        },
-      ];
-    }
-    if (status !== "OK") {
-      // alert("Invalid input. Please enter a valid place name.");
-      displayError("Input not vaild location.");
-    } else {
-      console.log(results);
-      const locality = results[0].types.includes("locality");
-      const administrative = results[0].types.includes(
-        "administrative_area_level_3"
-      );
-      if (locality || administrative) {
-        let lat;
-        let lng;
-        let latlng;
-        let guess;
-
-        if (city == "liverpool") {
-          lat = results[0].geometry.location.lat;
-          lng = results[0].geometry.location.lng;
-          latlng = `${lng}, ${lat}`;
-          guess = results[0].address_components[0].long_name;
-        } else {
-          console.log(results);
-          lat = results[0].geometry.location.lat();
-          lng = results[0].geometry.location.lng();
-          latlng = `${lng}, ${lat}`;
-          guess = results[0].address_components[0].long_name;
-        }
-        // Get the latitude and longitude of the first result
-
-        if (guesses.includes(latlng)) {
-          displayError("Guess was already made.");
-          // alert("guess already made");
-        } else {
-          guesses.push(latlng);
-          circles.push({ lat: lat, lng: lng });
-          localStorage.setItem("guesses", JSON.stringify(guesses));
-          localStorage.setItem("circles", JSON.stringify(circles));
-          console.log(circles);
-          document.getElementById("input").classList.remove("error");
-          document.querySelector(".error-prompt").textContent = "";
-          // Create a circle around the city with a selected radius in KM
-          plotCircle(lat, lng);
-          // Make a turf circle with the guess location
-          const center = [lng, lat];
-          const radius = rad;
-          const options = {
-            steps: 500,
-            units: "kilometers",
-            properties: { foo: "bar" },
-          };
-          const tCircle = turf.circle(center, radius, options);
-          checkCoverage(tCircle);
-          countryDisplay();
-        }
+  geocoder.geocode(
+    { address: city, componentRestrictions: { country: "US" } },
+    function (results, status) {
+      if (status !== "OK") {
+        // alert("Invalid input. Please enter a valid place name.");
+        displayError("Input not vaild location.");
       } else {
-        // alert("Guess was not a town or city");
-        displayError("Guess was not a town or city.");
+        console.log(results);
+        const locality = results[0].types.includes("locality");
+        const administrative = results[0].types.includes(
+          "administrative_area_level_3"
+        );
+        if (locality || administrative) {
+          let lat;
+          let lng;
+          let latlng;
+          let guess;
+
+          if (city == "liverpool") {
+            lat = results[0].geometry.location.lat;
+            lng = results[0].geometry.location.lng;
+            latlng = `${lng}, ${lat}`;
+            guess = results[0].address_components[0].long_name;
+          } else {
+            console.log(results);
+            lat = results[0].geometry.location.lat();
+            lng = results[0].geometry.location.lng();
+            latlng = `${lng}, ${lat}`;
+            guess = results[0].address_components[0].long_name;
+          }
+          // Get the latitude and longitude of the first result
+
+          if (guesses.includes(latlng)) {
+            displayError("Guess was already made.");
+            // alert("guess already made");
+          } else {
+            guesses.push(latlng);
+            circles.push({ lat: lat, lng: lng });
+            localStorage.setItem("guesses", JSON.stringify(guesses));
+            localStorage.setItem("circles", JSON.stringify(circles));
+            console.log(circles);
+            document.getElementById("input").classList.remove("error");
+            document.querySelector(".error-prompt").textContent = "";
+            // Create a circle around the city with a selected radius in KM
+            plotCircle(lat, lng);
+            // Make a turf circle with the guess location
+            const center = [lng, lat];
+            const radius = rad;
+            const options = {
+              steps: 500,
+              units: "kilometers",
+              properties: { foo: "bar" },
+            };
+            const tCircle = turf.circle(center, radius, options);
+            checkCoverage(tCircle);
+            countryDisplay();
+          }
+        } else {
+          // alert("Guess was not a town or city");
+          displayError("Guess was not a town or city.");
+        }
       }
     }
-  });
+  );
   document.getElementById("input").value = "";
 }
 
@@ -150,7 +143,8 @@ function displayError(message) {
 function countryDisplay() {
   let remainingCountries = [];
   COUNTRY_DATA.forEach((country) => {
-    const countryID = country.properties.ISO2.toLowerCase();
+    console.log(country);
+    const countryID = country.id.toUpperCase();
     // if country already covered skip
     if (coveredCountries.includes(countryID)) {
       remainingCountries.filter((a) => a !== countryID);
@@ -162,19 +156,19 @@ function countryDisplay() {
     }
   });
 
-  const remainingFlags = remainingCountries.map(
-    (id) => `<span class="fi fi-${id}"></span>`
-  );
+  // const remainingFlags = remainingCountries.map(
+  //   (id) => `<span class="fi fi-${id}"></span>`
+  // );
 
-  const coveredFlags = coveredCountries.map(
-    (id) => `<span class="fi fi-${id}"></span>`
-  );
+  // const coveredFlags = coveredCountries.map(
+  //   (id) => `<span class="fi fi-${id}"></span>`
+  // );
 
   document.querySelector(".countries-uncomplete").innerHTML =
-    remainingFlags.join(" ");
+    remainingCountries.join(", ");
 
   document.querySelector(".countries-complete").innerHTML =
-    coveredFlags.join(" ");
+    coveredCountries.join(", ");
 }
 
 // Function to check if guess covers whole country
@@ -184,7 +178,7 @@ function checkCoverage(tCircle) {
   // Merge together the guess tPoly and the current total guess mesh
   union = turf.union(circlePoly, union);
   COUNTRY_DATA.forEach((country) => {
-    let countryID = country.properties.ISO2.toLowerCase();
+    let countryID = country.id.toUpperCase();
     // if country already covered log already covered
     if (!coveredCountries.includes(countryID)) {
       const sect = turf.intersect(union, country);
@@ -216,7 +210,6 @@ function checkCoverage(tCircle) {
 
 //Function to reload the page/reset
 function reset() {
-  // initMap()
   localStorage.clear();
 
   location.reload();
