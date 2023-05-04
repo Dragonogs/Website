@@ -25,6 +25,7 @@ async function fetchData() {
 
 // Initialize Google Maps
 function initMap() {
+  localStorage.removeItem("remaining");
   // Set initial map center
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 50.43683767611142, lng: 11.646820736967626 },
