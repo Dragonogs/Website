@@ -1,8 +1,8 @@
 // Define variables
 let map;
-let guesses = JSON.parse(localStorage.getItem("guesses")) || [];
+let guesses = JSON.parse(localStorage.getItem("guessesUS")) || [];
 let tCircleArray = [];
-let circles = JSON.parse(localStorage.getItem("circles")) || [];
+let circles = JSON.parse(localStorage.getItem("circlesUS")) || [];
 let nullIsland = turf.circle([0, 0], 1, {
   steps: 5,
   units: "kilometers",
@@ -10,7 +10,7 @@ let nullIsland = turf.circle([0, 0], 1, {
 });
 let union = turf.polygon(nullIsland.geometry.coordinates);
 
-let coveredCountries = JSON.parse(localStorage.getItem("covered")) || [];
+let coveredCountries = JSON.parse(localStorage.getItem("coveredUS")) || [];
 let COUNTRY_DATA;
 
 const url = "../data/usa-map.geojson";
@@ -25,7 +25,6 @@ async function fetchData() {
 
 // Initialize Google Maps
 function initMap() {
-  localStorage.removeItem("remaining");
   // Set initial map center
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 37.82832118183827, lng: -98.57949042881638 },
@@ -93,8 +92,8 @@ function guess() {
           } else {
             guesses.push(latlng);
             circles.push({ lat: lat, lng: lng });
-            localStorage.setItem("guesses", JSON.stringify(guesses));
-            localStorage.setItem("circles", JSON.stringify(circles));
+            localStorage.setItem("guessesUS", JSON.stringify(guesses));
+            localStorage.setItem("circlesUS", JSON.stringify(circles));
             console.log(circles);
             document.getElementById("input").classList.remove("error");
             document.querySelector(".error-prompt").textContent = "";
@@ -153,7 +152,7 @@ function countryDisplay() {
     // Else push country to array
     else {
       remainingCountries.push(countryID);
-      localStorage.setItem("remaining", JSON.stringify(remainingCountries));
+      localStorage.setItem("remainingUS", JSON.stringify(remainingCountries));
     }
   });
 
@@ -198,7 +197,7 @@ function checkCoverage(tCircle) {
           // if country already covered skip else print country
           if (!coveredCountries.includes(countryID)) {
             coveredCountries.push(countryID);
-            localStorage.setItem("covered", JSON.stringify(coveredCountries));
+            localStorage.setItem("coveredUS", JSON.stringify(coveredCountries));
           }
         }
         if (sectArea < countryArea) {
