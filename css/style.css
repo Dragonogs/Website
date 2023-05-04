@@ -213,6 +213,13 @@ footer::before {
   margin: 0 auto;
   min-height: calc(100vh - 200px);
 }
+.site-wrap .map-title {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.site-wrap .description {
+  opacity: 0.8;
+}
 .site-wrap .game-wrapper {
   display: flex;
 }

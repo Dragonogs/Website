@@ -3,6 +3,12 @@
   max-width: 100%;
   margin: 0 auto;
   min-height: calc(100vh - 200px);
+  .map-title {
+    width: fit-content;
+  }
+  .description {
+    opacity: 0.8;
+  }
   .game-wrapper {
     display: flex;
     .map-wrap {

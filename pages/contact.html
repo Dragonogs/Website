@@ -1,134 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/x-icon" href="../img/favicon.ico" />
-		<link href="../css/style.css" rel="stylesheet" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Vujahday+Script&display=swap"
-			rel="stylesheet"
-		/>
-		<script
-			src="https://kit.fontawesome.com/7a12354e0f.js"
-			crossorigin="anonymous"
-		></script>
-		<title>Contact | Dragonogs</title>
-	</head>
-	<body>
-		<nav class="navbar">
-			<a href="../index.html"
-				><div class="brand">Dragon<strong>ogs</strong></div></a
-			>
-			<ul>
-				<li><a href="../index.html" class="nav-link">Home</a></li>
-				<li><a href="../index.html#projects" class="nav-link">Projects</a></li>
-				<li><a href="./about.html" class="nav-link">About</a></li>
-				<li><a href="./contact.html" class="nav-link">Contact</a></li>
-				<li>
-					<button
-						class="dropdown-btn"
-						onclick="document.getElementById('mobile-nav').style.transform = 'translateX(0)'"
-					>
-						<i class="fas fa-bars"></i>
-					</button>
-				</li>
-			</ul>
-		</nav>
-		<nav id="mobile-nav" class="mobile-nav move-right">
-			<ul>
-				<li>
-					<a
-						href="../index.html"
-						class="mobile-nav-link"
-						onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
-						>Home</a
-					>
-				</li>
-				<li>
-					<a
-						href="../index.html#projects"
-						class="mobile-nav-link"
-						onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
-						>Projects</a
-					>
-				</li>
-				<li>
-					<a
-						href="./about.html"
-						class="mobile-nav-link"
-						onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
-						>About</a
-					>
-				</li>
-				<li>
-					<a
-						href="#"
-						class="mobile-nav-link"
-						onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
-						>Contact</a
-					>
-				</li>
-				<li>
-					<button
-						class="dropdown-btn"
-						onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
-					>
-						<i class="fa fa-times mobile-nav-link"></i>
-					</button>
-				</li>
-			</ul>
-		</nav>
-		<main class="section contact">
-			<div class="container flex">
-				<form
-					class="flex form"
-					action="https://formsubmit.co/2ca14d2c36198036c5f8e15e222cd7bc"
-					method="POST"
-				>
-					<h2 class="contact-title">Contact me</h2>
-					<!-- Honeypot -->
-					<input type="text" name="_honey" style="display: none" />
-					<!-- Disable captcha -->
-					<input type="hidden" name="_captcha" value="false" />
-					<input
-						type="hidden"
-						name="_next"
-						value="https://dragonogs.pages.dev/pages/success"
-					/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Vujahday+Script&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/7a12354e0f.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/main.js" defer></script>
+    <title>Contact | Dragonogs</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="../index.html"
+        ><div class="brand">Dragon<strong>ogs</strong></div></a
+      >
+      <ul>
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+        <li><a href="./about.html" class="nav-link">About</a></li>
+        <li><a href="./contact.html" class="nav-link">Contact</a></li>
+        <li>
+          <button
+            class="dropdown-btn"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(0)'"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <nav id="mobile-nav" class="mobile-nav move-right">
+      <ul>
+        <li>
+          <a
+            href="../index.html"
+            class="mobile-nav-link"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="../index.html#projects"
+            class="mobile-nav-link"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+            >Projects</a
+          >
+        </li>
+        <li>
+          <a
+            href="./about.html"
+            class="mobile-nav-link"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="mobile-nav-link"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+            >Contact</a
+          >
+        </li>
+        <li>
+          <button
+            class="dropdown-btn"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+          >
+            <i class="fa fa-times mobile-nav-link"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <main class="section contact">
+      <div class="container flex">
+        <form
+          class="flex form"
+          action="https://formsubmit.co/2ca14d2c36198036c5f8e15e222cd7bc"
+          method="POST"
+        >
+          <h2 class="contact-title">Contact me</h2>
+          <!-- Honeypot -->
+          <input type="text" name="_honey" style="display: none" />
+          <!-- Disable captcha -->
+          <input type="hidden" name="_captcha" value="false" />
+          <input
+            type="hidden"
+            name="_next"
+            value="https://dragonogs.pages.dev/pages/success"
+          />
 
-					<input
-						id="name"
-						type="text"
-						class="form-input"
-						name="Name"
-						placeholder="Name"
-						onkeyup="isEmpty()"
-						required
-					/>
+          <input
+            id="name"
+            type="text"
+            class="form-input"
+            name="Name"
+            placeholder="Name"
+            onkeyup="isEmpty()"
+            required
+          />
 
-					<input
-						id="email"
-						type="email"
-						class="form-input"
-						name="Email"
-						placeholder="Email"
-						required
-					/>
-					<textarea
-						id="message"
-						class="form-input text-area"
-						name="Message"
-						placeholder="Message"
-						required
-					></textarea>
-					<button id="submit-btn" type="submit" class="submit-btn">Send</button>
-				</form>
-			</div>
-		</main>
-		<footer><p class="footer">Dragonogs | 2022</p></footer>
-	</body>
+          <input
+            id="email"
+            type="email"
+            class="form-input"
+            name="Email"
+            placeholder="Email"
+            required
+          />
+          <textarea
+            id="message"
+            class="form-input text-area"
+            name="Message"
+            placeholder="Message"
+            required
+          ></textarea>
+          <button id="submit-btn" type="submit" class="submit-btn">Send</button>
+        </form>
+      </div>
+    </main>
+    <p class="footer">Dragonogs | <span class="year">20</span></p>
+  </body>
 </html>

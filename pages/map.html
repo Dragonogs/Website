@@ -26,6 +26,7 @@
       src="https://kit.fontawesome.com/7a12354e0f.js"
       crossorigin="anonymous"
     ></script>
+    <script src="../js/main.js" defer></script>
     <title>Map | Dragonogs</title>
   </head>
   <body>
@@ -94,6 +95,9 @@
     </nav>
     <main class="site-wrap">
       <h1 class="map-title">Europe City Coverage Quiz</h1>
+      <p class="description">
+        Type out cities and try to cover the countries of Europe with circles!
+      </p>
       <div class="game-wrapper">
         <div class="map-wrap">
           <div class="controls">
@@ -105,6 +109,11 @@
                 <option value="50">50km</option>
                 <option value="100">100km</option>
                 <option selected="selected" value="200">200km</option>
+              </select>
+              <p>Country:</p>
+              <select name="country" id="country">
+                <option value="US">USA</option>
+                <option value="EU">EUROPE</option>
               </select>
             </div>
             <div class="guess-box">
@@ -147,6 +156,6 @@
       </div>
     </main>
 
-    <footer><p class="footer">Dragonogs | 2022</p></footer>
+    <p class="footer">Dragonogs | <span class="year">20</span></p>
   </body>
 </html>
