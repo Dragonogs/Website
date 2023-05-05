@@ -76,3 +76,14 @@
     }
   }
 }
+
+.link-para {
+  padding-top: 1em;
+  .link {
+    padding: 1em 1.5em;
+    margin-inline: 1em;
+    background-color: $clr-accent;
+    width: fit-content;
+    display: inline-block;
+  }
+}

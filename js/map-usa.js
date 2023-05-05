@@ -58,10 +58,9 @@ function guess() {
     { address: city, componentRestrictions: { country: "US" } },
     function (results, status) {
       if (status !== "OK") {
-        // alert("Invalid input. Please enter a valid place name.");
         displayError("Input not vaild location.");
-      } else {
         console.log(results);
+      } else {
         const locality = results[0].types.includes("locality");
         const administrative = results[0].types.includes(
           "administrative_area_level_3"
@@ -72,18 +71,12 @@ function guess() {
           let latlng;
           let guess;
 
-          if (city == "liverpool") {
-            lat = results[0].geometry.location.lat;
-            lng = results[0].geometry.location.lng;
-            latlng = `${lng}, ${lat}`;
-            guess = results[0].address_components[0].long_name;
-          } else {
-            console.log(results);
-            lat = results[0].geometry.location.lat();
-            lng = results[0].geometry.location.lng();
-            latlng = `${lng}, ${lat}`;
-            guess = results[0].address_components[0].long_name;
-          }
+          console.log(results);
+          lat = results[0].geometry.location.lat();
+          lng = results[0].geometry.location.lng();
+          latlng = `${lng}, ${lat}`;
+          guess = results[0].address_components[0].long_name;
+
           // Get the latitude and longitude of the first result
 
           if (guesses.includes(latlng)) {
@@ -94,7 +87,6 @@ function guess() {
             circles.push({ lat: lat, lng: lng });
             localStorage.setItem("guessesUS", JSON.stringify(guesses));
             localStorage.setItem("circlesUS", JSON.stringify(circles));
-            console.log(circles);
             document.getElementById("input").classList.remove("error");
             document.querySelector(".error-prompt").textContent = "";
             // Create a circle around the city with a selected radius in KM
@@ -114,6 +106,7 @@ function guess() {
         } else {
           // alert("Guess was not a town or city");
           displayError("Guess was not a town or city.");
+          console.log(results);
         }
       }
     }
@@ -143,7 +136,6 @@ function displayError(message) {
 function countryDisplay() {
   let remainingCountries = [];
   COUNTRY_DATA.forEach((country) => {
-    console.log(country);
     const countryID = country.id.toUpperCase();
     // if country already covered skip
     if (coveredCountries.includes(countryID)) {

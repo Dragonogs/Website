@@ -279,6 +279,18 @@ footer::before {
   color: rgb(255, 82, 82);
 }
 
+.link-para {
+  padding-top: 1em;
+}
+.link-para .link {
+  padding: 1em 1.5em;
+  margin-inline: 1em;
+  background-color: #682ae9;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: inline-block;
+}
+
 .contact .container {
   flex-direction: column;
   justify-content: center;
