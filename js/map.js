@@ -16,72 +16,6 @@ let COUNTRY_DATA;
 
 const url = "../data/map.geojson";
 
-// Define your worker code as a string
-const workerCode = `
-  self.onmessage = function (event) {
-    const { tCircle, COUNTRY_DATA } = event.data;
-    const results = checkCoverage(tCircle, COUNTRY_DATA);
-    postMessage(results);
-  };
-
-  function checkCoverage(tCircle, COUNTRY_DATA) {
-    // Make the guess circle a turf polygon
-    const circlePoly = turf.polygon(tCircle.geometry.coordinates);
-    // Merge together the guess tPoly and the current total guess mesh
-    union = turf.union(circlePoly, union);
-    COUNTRY_DATA.forEach((country) => {
-      let countryID = country.properties.ISO2.toLowerCase();
-      // if country already covered log already covered
-      if (!coveredCountries.includes(countryID)) {
-        const sect = turf.intersect(union, country);
-        // If section covers country calc area
-        if (sect !== null) {
-          let sectArea = Math.round(turf.area(sect));
-          let countryArea = Math.round(turf.area(country));
-          if (sectArea == 111065498183 && countryID == "bg") {
-            sectArea = 111065498203;
-          }
-          if (sectArea == 64456758251 && countryID == "lv") {
-            sectArea = 64456758494;
-          }
-          // If country is fully covered by section
-          if (sectArea >= countryArea) {
-            // if country already covered skip else print country
-            if (!coveredCountries.includes(countryID)) {
-              coveredCountries.push(countryID);
-              localStorage.setItem("covered", JSON.stringify(coveredCountries));
-            }
-          }
-          if (sectArea < countryArea) {
-            const percentCovered = (sectArea / countryArea) * 100;
-          }
-        }
-      }
-    });
-    return { coveredCountries, percentCovered };
-  }
-`;
-
-// Create a Blob with the worker code
-const workerBlob = new Blob([workerCode], { type: "application/javascript" });
-
-// Create a URL for the Blob
-const workerBlobURL = URL.createObjectURL(workerBlob);
-
-// Create the Web Worker using the Blob URL
-const worker = new Worker(workerBlobURL);
-
-// Set up the message event listener
-worker.onmessage = function (event) {
-  const { coveredCountries, percentCovered } = event.data;
-  console.log(event.data);
-  countryDisplay();
-};
-
-function guess() {
-  worker.postMessage({ tCircle, COUNTRY_DATA });
-}
-
 // Initialize Google Maps
 function initMap() {
   // Set initial map center
@@ -310,8 +244,10 @@ function guess() {
 
 //Function to reload the page/reset
 function reset() {
-  // initMap()
-  localStorage.clear();
+  localStorage.removeItem("circles");
+  localStorage.removeItem("guesses");
+  localStorage.removeItem("remaining");
+  localStorage.removeItem("covered");
 
   location.reload();
 }
