@@ -1,5 +1,6 @@
 // Define variables
 let map;
+let mostRecentCircle;
 let guesses = JSON.parse(localStorage.getItem("guessesUS")) || [];
 let tCircleArray = [];
 let circles = JSON.parse(localStorage.getItem("circlesUS")) || [];
@@ -14,6 +15,73 @@ let coveredCountries = JSON.parse(localStorage.getItem("coveredUS")) || [];
 let COUNTRY_DATA;
 
 const url = "../data/usa-map.geojson";
+
+// Define your worker code as a string
+const workerCode = `
+  self.onmessage = function (event) {
+    const { tCircle, COUNTRY_DATA } = event.data;
+    const results = checkCoverage(tCircle, COUNTRY_DATA);
+    postMessage(results);
+  };
+
+  function checkCoverage(tCircle, COUNTRY_DATA) {
+    // Make the guess circle a turf polygon
+    const circlePoly = turf.polygon(tCircle.geometry.coordinates);
+    // Merge together the guess tPoly and the current total guess mesh
+    union = turf.union(circlePoly, union);
+    COUNTRY_DATA.forEach((country) => {
+      let countryID = country.properties.ISO2.toLowerCase();
+      // if country already covered log already covered
+      if (!coveredCountries.includes(countryID)) {
+        const sect = turf.intersect(union, country);
+        // If section covers country calc area
+        if (sect !== null) {
+          let sectArea = Math.round(turf.area(sect));
+          let countryArea = Math.round(turf.area(country));
+          if (sectArea == 111065498183 && countryID == "bg") {
+            sectArea = 111065498203;
+          }
+          if (sectArea == 64456758251 && countryID == "lv") {
+            sectArea = 64456758494;
+          }
+          // If country is fully covered by section
+          if (sectArea >= countryArea) {
+            // if country already covered skip else print country
+            if (!coveredCountries.includes(countryID)) {
+              coveredCountries.push(countryID);
+              localStorage.setItem("covered", JSON.stringify(coveredCountries));
+            }
+          }
+          if (sectArea < countryArea) {
+            const percentCovered = (sectArea / countryArea) * 100;
+          }
+        }
+      }
+    });
+    return { coveredCountries, percentCovered };
+  }
+`;
+
+// Create a Blob with the worker code
+const workerBlob = new Blob([workerCode], { type: "application/javascript" });
+
+// Create a URL for the Blob
+const workerBlobURL = URL.createObjectURL(workerBlob);
+
+// Create the Web Worker using the Blob URL
+const worker = new Worker(workerBlobURL);
+
+// Set up the message event listener
+worker.onmessage = function (event) {
+  const { coveredCountries, percentCovered } = event.data;
+  // Update the DOM and localStorage with the received data
+  countryDisplay();
+  // ...
+};
+
+function guess() {
+  worker.postMessage({ tCircle, COUNTRY_DATA });
+}
 
 // Get country GEOJson data
 async function fetchData() {
@@ -114,17 +182,28 @@ function guess() {
   document.getElementById("input").value = "";
 }
 
+// Function to plot circle on the map
 function plotCircle(lat, lng) {
+  // Check if theres a most recent circle
+  if (mostRecentCircle) {
+    // Change the colour of the most recent circle to orange
+    mostRecentCircle.setOptions({
+      strokeColor: "black", // Stroke colour
+      fillColor: "#ffff", // Fill colour
+    });
+  }
+
   let rad = document.getElementById("radius").value;
-  new google.maps.Circle({
+  // Create circle and store as most recent
+  mostRecentCircle = new google.maps.Circle({
     center: { lat, lng },
-    radius: rad * 1000, //Times 1000 to convert to kilometer
+    radius: rad * 1000,
     map,
-    strokeColor: "#4a69c8 ",
+    strokeColor: "black", // Most recent guess stroke colour
     strokeOpacity: 0.8,
     strokeWeight: 2,
-    fillColor: "#5c84ff",
-    fillOpacity: 0.7,
+    fillColor: "#682ae9", // Most recent guess fill colour
+    fillOpacity: 0.5,
   });
 }
 
