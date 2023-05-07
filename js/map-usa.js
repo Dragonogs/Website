@@ -141,8 +141,12 @@ function plotCircle(lat, lng) {
 }
 
 function displayError(message) {
-  document.getElementById("input").classList.add("error");
+  document.querySelector(".error-prompt").classList.add("shake");
   document.querySelector(".error-prompt").textContent = message;
+  setTimeout(() => {
+    document.getElementById("input").classList.remove("error");
+    document.querySelector(".error-prompt").classList.remove("shake");
+  }, 500);
 }
 
 function countryDisplay() {

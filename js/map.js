@@ -111,8 +111,12 @@ function checkCoverage(tCircle) {
 
 // Function to display errors in the DOM
 function displayError(message) {
-  document.getElementById("input").classList.add("error");
+  document.querySelector(".error-prompt").classList.add("shake");
   document.querySelector(".error-prompt").textContent = message;
+  setTimeout(() => {
+    document.getElementById("input").classList.remove("error");
+    document.querySelector(".error-prompt").classList.remove("shake");
+  }, 500);
 }
 
 // Function to display country arrays in the DOM and convert to flag spans
