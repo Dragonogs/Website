@@ -7,7 +7,6 @@ let circles = JSON.parse(localStorage.getItem("circles")) || [];
 let nullIsland = turf.circle([0, 0], 1, {
   steps: 5,
   units: "kilometers",
-  properties: { foo: "bar" },
 });
 let union = turf.polygon(nullIsland.geometry.coordinates);
 
@@ -85,24 +84,16 @@ function checkCoverage(tCircle) {
       const sect = turf.intersect(union, country);
       // If section covers country calc area
       if (sect !== null) {
-        let sectArea = Math.round(turf.area(sect));
-        let countryArea = Math.round(turf.area(country));
-        if (sectArea == 111065498183 && countryID == "bg") {
-          sectArea = 111065498203;
-        }
-        if (sectArea == 64456758251 && countryID == "lv") {
-          sectArea = 64456758494;
-        }
+        let sectArea = turf.area(sect);
+        let countryArea = turf.area(country);
+        const coverage = sectArea / countryArea
         // If country is fully covered by section
-        if (sectArea >= countryArea) {
+        if (coverage >= 0.99999) {
           // if country already covered skip else print country
           if (!coveredCountries.includes(countryID)) {
             coveredCountries.push(countryID);
             localStorage.setItem("covered", JSON.stringify(coveredCountries));
           }
-        }
-        if (sectArea < countryArea) {
-          const percentCovered = (sectArea / countryArea) * 100;
         }
       }
     }
@@ -172,43 +163,20 @@ function guess() {
   geocoder.geocode(
     { address: city, bounds: bounds },
     function (results, status) {
-      if (city == "liverpool") {
-        status = "OK";
-        results = [
-          {
-            address_components: [{ long_name: "Liverpool" }],
-            geometry: { location: { lat: 53.4084, lng: -2.9916 } },
-            types: ["locality"],
-          },
-        ];
-      }
       if (status !== "OK") {
         // alert("Invalid input. Please enter a valid place name.");
-        displayError("Input not vaild location.");
-        console.log(results);
+        displayError("Input is not a vaild location.");
       } else {
         const locality = results[0].types.includes("locality");
         const administrative = results[0].types.includes(
           "administrative_area_level_3"
         );
         if (locality || administrative) {
-          console.log(results);
-          let lat;
-          let lng;
-          let latlng;
-          let guess;
 
-          if (city == "liverpool") {
-            lat = results[0].geometry.location.lat;
-            lng = results[0].geometry.location.lng;
-            latlng = `${lng}, ${lat}`;
-            guess = results[0].address_components[0].long_name;
-          } else {
-            lat = results[0].geometry.location.lat();
-            lng = results[0].geometry.location.lng();
-            latlng = `${lng}, ${lat}`;
-            guess = results[0].address_components[0].long_name;
-          }
+          let lat = results[0].geometry.location.lat();
+          let lng = results[0].geometry.location.lng();
+          let latlng = `${lng}, ${lat}`;
+          let guess = results[0].address_components[0].long_name;
           // Get the latitude and longitude of the first result
 
           if (guesses.includes(latlng)) {
@@ -229,7 +197,6 @@ function guess() {
             const options = {
               steps: 500,
               units: "kilometers",
-              properties: { foo: "bar" },
             };
             const tCircle = turf.circle(center, radius, options);
             checkCoverage(tCircle);
@@ -238,7 +205,6 @@ function guess() {
         } else {
           // alert("Guess was not a town or city");
           displayError("Guess was not a town or city.");
-          console.log(results);
         }
       }
     }
