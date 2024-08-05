@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Vujahday+Script&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/7a12354e0f.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/main.js" defer></script>
+    <title>Diamond Jewellery | Dragonogs</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="../index.html"
+        ><div class="brand">Dragon<strong>ogs</strong></div></a
+      >
+      <ul>
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+        <li><a href="./about.html" class="nav-link">About</a></li>
+        <li><a href="./contact.html" class="nav-link">Contact</a></li>
+        <li>
+          <button
+            class="dropdown-btn"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(0)'"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <nav id="mobile-nav" class="mobile-nav move-right">
+      <ul>
+        <li>
+          <a
+            href="../index.html"
+            class="mobile-nav-link"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="../index.html#projects"
+            class="mobile-nav-link"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+            >Projects</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="mobile-nav-link"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="./contact.html"
+            class="mobile-nav-link"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+            >Contact</a
+          >
+        </li>
+        <li>
+          <button
+            class="dropdown-btn"
+            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+          >
+            <i class="fa fa-times mobile-nav-link"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <main class="section about">
+      <div class="article-container flex">
+        <h2 class="article-title">Diamond Jewellery</h2>
+        <div class="stack-wrapper">
+          <i class="fab fa-html5"></i>
+          <i class="fab fa-css3-alt"></i>
+          <i class="fab fa-react"></i>
+          <i class="fab fa-node-js"></i>
+          <i class="fas fa-database"></i>
+          <a class="article-btn" href="https://diamond-jewellery.onrender.com/"
+            >Visit website >
+          </a>
+        </div>
+
+        <p>
+          This project Initially started during my ICT college course, where I
+          was tasked with creating a website for a fictional business. I was
+          given a selection of logos to choose from, such as an outdoor retailer
+          or a luxury jewelry store. I decided to go with the Diamond Jewellery
+          logo so I could make a sleek and elegant design.
+        </p>
+      </div>
+      <div class="article-img-group">
+        <img class="article-img" src="../img/diamond-jewellery-image-2.png" />
+        <img class="article-img" src="../img/diamond-jewellery-image-3.png" />
+      </div>
+      <div class="container flex">
+        <article class="article-content">
+          <h3 class="article-sub-heading">About</h3>
+          <p class="article-p">
+            For the first iteration of the website, I utilized Bootstrap
+            components and basic JavaScript. Despite the initial design being
+            quite simplistic and relying on what I now view as unattractive
+            Bootstrap elements, my enthusiasm for web development set my project
+            apart. My site ended up looking better than most of my classmates'
+            projects. Although this first iteration was very bare-bones, I felt
+            it was a decent effort for one of my first websites.
+          </p>
+
+          <img
+            class="article-img-inline"
+            src="../img/diamond-jewellery-image.png"
+          />
+          <p class="article-p">
+            Once I had left college I decided I was going to revisit the website
+            and improve upon it in order to make it fully functional with
+            dynamically rendered items from a database and a cart system. To do
+            this I chose to use PHP for server-side scripting and MySQL for
+            database management. However, while using PHP I encountered
+            difficulties in trying to update the shopping cart counter on
+            multiple pages, which led me to temporarily abandon the project for
+            a while.
+          </p>
+          <p class="article-p">
+            After some time, I came back to the project and quickly realized I
+            had forgotten how most of the PHP I had written worked. Still stuck
+            with the issue of rendering cart information on multiple pages, I
+            decided it would be better to rewrite the entire website using
+            modern web technologies. I opted for a MySQL - Express - React -
+            NodeJS (MERN) stack, as it seemed the most logical and
+            straightforward approach, using my basic knowledge of JavaScript.
+            Through this process, I gained much more experience in both
+            front-end and back-end development. On the front end, I used React
+            and CSS to create a dynamic and responsive user interface, while on
+            the back end, I built a RESTful API using Express and NodeJS to
+            query my MySQL database and serve it to the front end.
+          </p>
+          <p class="article-p">
+            One of the most significant challenges I faced (other than CORS
+            errors) was managing secure user logins and personalized content.
+            Despite initial difficulties in understanding how to implement
+            secure authentication, I eventually decided to use JSON Web Tokens
+            (JWT) instead of session IDs due to their simplicity. However, My
+            implementation does have a vulnerability: the JWTs issued have
+            1000-day expiration timers and only expire upon user logout. This
+            means that a malicious actor could hijack a token and gain prolonged
+            access to a user's account. This could easily be solved by reducing
+            the token expiration time and implementing token renewal mechanisms
+            to enhance security, I decided it was overkill for the scope of the
+            project.
+          </p>
+        </article>
+      </div>
+    </main>
+
+    <footer>
+      <p class="footer">Dragonogs | <span class="year">20</span></p>
+    </footer>
+  </body>
+</html>
