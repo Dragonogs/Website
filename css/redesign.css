@@ -1,0 +1,495 @@
+/* makes sizing simpler */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* remove default spacing */
+/* force styling of type through styling, rather than elements */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* dark mode user-agent-styles */
+/* improves punctuation in supported browsers */
+html {
+  color-scheme: dark light;
+  hanging-punctuation: first last;
+}
+
+/* min body height */
+body {
+  min-height: 100svh;
+}
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* Improved heading in supported browsers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/* improve readability with max-width on paragraphs and lists */
+/* prevent orphans in supported browsers */
+p,
+li {
+  max-width: var(--p-max-width, 65ch);
+  text-wrap: pretty;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :has(:target) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+}
+
+/* FONTS */
+
+/**
+* @license
+*
+* Font Family: Anton
+* Designed by: Vernon Adams
+* URL: https://www.fontshare.com/fonts/anton
+* © 2024 Indian Type Foundry
+*
+* Anton Regular 
+
+*
+*/
+@font-face {
+  font-family: "Anton-Regular";
+  src: url("../fonts/Anton-Regular.woff2") format("woff2"),
+    url("../fonts/Anton-Regular.woff") format("woff"),
+    url("../fonts/Anton-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* MY STYLES */
+
+:root {
+  --clr-dark: #10100e;
+  --clr-light: white;
+  --clr-accent: #4813b9;
+  --clr-error: rgb(255, 82, 82);
+  --clr-success: rgb(82, 255, 111);
+  --clr-border: rgba(255, 255, 255, 0.226);
+
+  --fs-h2: 5.61rem;
+  --fs-h3: 4.209rem;
+  --fs-h4: 3.157rem;
+  --fs-body: 1rem;
+  --fs-body-l: 1.333rem;
+  --fs-body-s: 0.75rem;
+}
+
+body {
+  color: var(--clr-light);
+  background-color: var(--clr-dark);
+  display: flex;
+  flex-direction: column;
+  font-size: var(--fs-body);
+  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+}
+
+h1,
+h2 {
+  font-size: var(--fs-h2);
+  line-height: 1em;
+  font-family: "Anton-Regular";
+}
+h3 {
+  font-size: var(--fs-h3);
+  /* height: 1.6em; */
+  font-family: "Anton-Regular";
+}
+h4 {
+  font-size: var(--fs-h4);
+  font-family: "Anton-Regular";
+}
+.large-body {
+  font-size: var(--fs-body-l);
+}
+.small-body {
+  font-size: var(--fs-body-s);
+}
+
+.hidden {
+  display: none;
+}
+
+.logo {
+  width: 100%;
+  height: fit-content;
+  opacity: 0.2;
+  animation: logoSlide 1s ease;
+}
+
+.container-border {
+  margin-inline: 10%;
+  border-left: 1px solid var(--clr-border);
+  border-right: 1px solid var(--clr-border);
+}
+
+.container {
+  padding-inline: 2rem;
+}
+
+.popout-container {
+  padding-inline: 5%;
+}
+
+.hero {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-content {
+  margin-block: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: var(--p-max-width, 120ch);
+  animation: hero 1.7s ease;
+}
+
+.primary-btn {
+  padding: 0.75em 1.5em;
+  background-color: var(--clr-accent);
+  width: fit-content;
+  border-radius: 5px;
+  transition: all 0.7 ease;
+  text-decoration: none;
+  color: var(--clr-light);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--fs-body-l);
+  padding-block: 0.5rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  background-color: var(--clr-dark);
+  border-bottom: 1px solid var(--clr-border);
+  -webkit-box-shadow: 0px 9px 30px 5px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 0px 9px 30px 5px rgba(0, 0, 0, 0.46);
+  box-shadow: 0px 9px 30px 5px rgba(0, 0, 0, 0.46);
+}
+
+.nav-item:first-of-type {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+}
+.nav-item {
+  display: flex;
+  gap: 2rem;
+}
+
+.hamburger {
+  display: none;
+  background-color: inherit;
+  border: none;
+}
+.hamburger:hover {
+  color: var(--clr-accent);
+  cursor: pointer;
+}
+
+.clr-accent {
+  color: var(--clr-accent);
+}
+
+.nav-item a {
+  color: white;
+  text-decoration: none;
+}
+.nav-item a:hover {
+  color: var(--clr-light);
+  text-decoration: underline;
+}
+
+.active {
+  font-weight: bold;
+  color: var(--clr-accent) !important;
+}
+
+.scroller {
+  border: 1px solid var(--clr-border);
+  padding-block: 2rem;
+}
+
+.scroller-inner {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.scroller-item {
+  max-height: 100px;
+}
+
+.project-item {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 30vh;
+  gap: 2rem;
+  color: var(--clr-dark);
+  text-align: end;
+  text-decoration: none;
+  transition: all 0.7s ease;
+}
+
+.left {
+  justify-content: start;
+  flex-direction: row-reverse;
+}
+.left .project-title {
+  text-align: left;
+}
+
+/* .project-title {
+  text-wrap: balance;
+  text-align: end;
+} */
+
+.project-img {
+  border: 0.2rem solid white;
+  width: 45%;
+  height: 160%;
+  object-fit: cover;
+  transition: all 0.7s ease;
+  border-radius: 10px;
+}
+
+.hover:hover .project-img {
+  width: 46%;
+  transition: all 0.7s ease;
+}
+
+.divider {
+  height: 200px;
+}
+
+.cl-dj {
+  background-color: #981e32;
+  border: 0.2rem solid #981e32;
+  color: white;
+}
+
+.cl-ecq {
+  background-color: var(--clr-accent);
+  border: 0.2rem solid var(--clr-accent);
+  color: white;
+}
+
+.hover:hover {
+  transition: all 0.7s ease;
+  transform: scale(103%);
+  cursor: pointer;
+  transition: all 0.7s ease;
+  /* text-decoration: underline; */
+  filter: brightness(70%);
+}
+
+.footer {
+  border-top: 1px solid var(--clr-border);
+  justify-content: center;
+  display: flex;
+}
+
+.footer-text {
+  text-align: center;
+  padding-block: 2em;
+}
+
+.dropdown-nav {
+  position: fixed;
+  background-color: var(--clr-dark);
+  bottom: 100%;
+  display: none;
+  width: 79.5vw;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  align-items: end;
+  /* height: 90vh; */
+  z-index: 99;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdown-nav a {
+  color: var(--clr-light);
+  font-family: "Anton-Regular";
+  text-decoration: none;
+  font-size: var(--fs-h3);
+  padding-block: 0.5em;
+  padding-right: 2rem;
+  border-bottom: 1px solid var(--clr-border);
+  width: 100%;
+  text-align: end;
+}
+
+.dropdown-nav a:hover {
+  color: var(--clr-accent);
+}
+
+/* ANIMS */
+
+@keyframes scroll {
+  to {
+    transform: translateX(calc(-50% - 5rem));
+  }
+}
+
+@keyframes logoSlide {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* BREAKPOINTS */
+
+@media (max-width: 768px) {
+  :root {
+    --clr-dark: #10100e;
+    --clr-light: white;
+    --clr-accent: #4813b9;
+
+    --clr-border: rgba(255, 255, 255, 0.226);
+
+    --fs-h2: 3.157rem;
+    --fs-h3: 2.369rem;
+    --fs-h4: 1.777rem;
+    --fs-body: 1rem;
+    --fs-body-l: 1.333rem;
+    --fs-body-s: 0.75rem;
+  }
+
+  .primary-btn {
+    font-size: var(--fs-body);
+  }
+
+  .hamburger {
+    display: inline-block;
+    font-size: 2rem;
+  }
+
+  .dropdown-nav {
+    display: flex;
+  }
+
+  .open-dropdown {
+    transform: translateY(100%);
+  }
+
+  .nav-item {
+    display: none;
+  }
+  .divider {
+    height: 150px;
+  }
+  .project-img {
+    height: 120%;
+  }
+  .logo {
+    padding-top: 2rem;
+  }
+  .experience-icon {
+    height: 50px;
+    margin-inline: 2px;
+  }
+  .scroller-item {
+    max-height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --clr-dark: #10100e;
+    --clr-light: white;
+    --clr-accent: #4813b9;
+
+    --clr-border: rgba(255, 255, 255, 0.226);
+
+    --fs-h2: 3.157rem;
+    --fs-h3: 2.369rem;
+    --fs-h4: 1.777rem;
+    --fs-body: 1rem;
+    --fs-body-l: 1.333rem;
+    --fs-body-s: 0.75rem;
+  }
+  .project-item {
+    flex-direction: column;
+    gap: 1em;
+    padding-top: 1em;
+  }
+  .project-img {
+    width: 100%;
+  }
+  .hover:hover .project-img {
+    width: 90%;
+    transition: all 0.7s ease;
+  }
+  .divider {
+    height: 50px;
+  }
+  .section-title {
+    text-align: center;
+  }
+  .hero-content {
+    align-items: center;
+    text-align: center;
+  }
+  .logo {
+    padding-top: 3rem;
+  }
+  .nav-item {
+    gap: 1rem;
+  }
+  .container {
+    padding: 0.3rem 1rem;
+  }
+}

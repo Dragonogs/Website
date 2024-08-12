@@ -1,47 +1,25 @@
-// Projects scroll animation
+const projectSection = document.getElementById("projects");
+const homeLink = document.getElementById("homeLink");
+const projectsLink = document.getElementById("projectsLink");
 
-const faders = document.querySelectorAll(".fade-in");
+const observer = new IntersectionObserver(
+  (entries) => {
+    if (entries[0].isIntersecting) {
+      projectsLink.classList.add("active");
+      homeLink.classList.remove("active");
+    } else {
+      homeLink.classList.add("active");
+      projectsLink.classList.remove("active");
+    }
+  },
+  { rootMargin: "-40%" }
+);
 
-const appearOptions = {
-	threshold: 0,
-	rootMargin: "0px 0px -150px 0px",
-};
+observer.observe(projectSection);
 
-const appearOnScroll = new IntersectionObserver(function (
-	entries,
-	appearOnScroll
-) {
-	entries.forEach((entry) => {
-		if (!entry.isIntersecting) {
-			return;
-		} else {
-			entry.target.classList.add("appear");
-			appearOnScroll.unobserve(entry.target);
-		}
-	});
-},
-appearOptions);
-
-faders.forEach((fader) => {
-	appearOnScroll.observe(fader);
-});
-
-// Nav active toggle
-
-const sections = document.querySelectorAll(".section");
-
-const navLink = document.getElementsByClassName(".nav-link");
-
-const navActiveOptions = {
-	threshold: 1,
-};
-
-const navActive = new IntersectionObserver(function (entries, navActive) {
-	entries.forEach((entry) => {
-		entry.target.classList.toggle("active");
-	});
-}, navActiveOptions);
-
-sections.forEach((section) => {
-	navActive.observe(section);
-});
+function toggleDropdown() {
+  const dropdownBtn = document.getElementById("dropdownBtn");
+  const dropdown = document.getElementById("dropdown");
+  dropdown.classList.toggle("open-dropdown");
+  dropdownBtn.classList.toggle("clr-accent");
+}

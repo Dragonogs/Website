@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- META TAGS -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,176 +33,132 @@
     <meta name="twitter:title" content="Dragonogs" />
     <meta
       name="twitter:description"
-      content="DragonOGS is an online platform to play the ancient game of Go with players from around the world."
+      content="Explore my personal website to discover my portfolio."
     />
     <meta
       name="twitter:image"
       content="https://dragonogs.pages.dev/images/twitter-card.jpg"
     />
+    <!-- LINKS -->
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
-    <link href="./css/style.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Vujahday+Script&display=swap"
-      rel="stylesheet"
-    />
+    <link href="./css/redesign.css" rel="stylesheet" />
     <script
       src="https://kit.fontawesome.com/7a12354e0f.js"
       crossorigin="anonymous"
     ></script>
-    <script src="./js/index.js" defer></script>
-    <script src="./js/main.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Home | Dragonogs</title>
+    <!-- JS SCRIPTS -->
+    <script src="./js/date.js" defer></script>
+    <script src="./js/index.js" defer></script>
   </head>
-  <body id="top">
-    <nav class="navbar">
-      <a href="./index.html"
-        ><div class="brand">Dragon<strong>ogs</strong></div></a
+  <body>
+    <header>
+      <nav class="container-border">
+        <div id="dropdown" class="dropdown-nav">
+          <a content=""></a>
+          <a onclick="toggleDropdown()" class="active" href="#">Home</a>
+          <a onclick="toggleDropdown()" href="#projects">Projects</a>
+          <a href="./pages/about.html">About</a>
+          <a href="./pages/contact.html">Contact</a>
+        </div>
+      </nav>
+
+      <nav class="container-border container navbar">
+        <div class="nav-item">
+          <a class="nav-icon" href="https://steamcommunity.com/id/Dragonogs"
+            ><i class="fab fa-steam-square"></i></a
+          ><a class="nav-icon" href="https://github.com/Dragonogs"
+            ><i class="fab fa-github-square"></i></a
+          ><a class="nav-icon" href="https://twitter.com/dragonogs"
+            ><i class="fab fa-twitter-square"></i
+          ></a>
+        </div>
+        <button onclick="toggleDropdown()" id="dropdownBtn" class="hamburger">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-item">
+          <a id="homeLink" class="active" href="#">Home</a>
+          <a id="projectsLink" href="#projects">Projects</a>
+          <a href="./pages/about.html">About</a>
+          <a href="./pages/contact.html">Contact</a>
+        </div>
+      </nav>
+    </header>
+    <section class="container-border hero">
+      <h1 class="hidden">DRAGONOGS</h1>
+      <img class="logo" src="./img/DRAGONOGS.svg" />
+      <div class="container hero-content">
+        <h2 class="hero-title">Beginner Web Designer And Developer.</h2>
+        <a href="./pages/contact.html" class="hover large-body primary-btn"
+          >Contact me</a
+        >
+      </div>
+    </section>
+    <section>
+      <h3 class="container-border container section-title">Experience With</h3>
+      <div class="scroller container-border">
+        <ul class="scroller-inner">
+          <img class="scroller-item" src="./img/css-3-logo-svgrepo-com.svg" />
+          <img class="scroller-item" src="./img/html-5-logo-svgrepo-com.svg" />
+          <img class="scroller-item" src="./img/mysql-logo-svgrepo-com.svg" />
+          <img class="scroller-item" src="./img/react-logo-svgrepo-com.svg" />
+          <img
+            class="scroller-item"
+            src="./img/nodejs-1-logo-svgrepo-com.svg"
+          />
+          <img
+            class="scroller-item"
+            src="./img/javascript-logo-svgrepo-com.svg"
+          />
+          <img class="scroller-item" src="./img/figma-1-logo-svgrepo-com.svg" />
+          <img
+            class="scroller-item"
+            src="./img/photoshop-cc-logo-svgrepo-com.svg"
+          />
+        </ul>
+      </div>
+    </section>
+    <div class="divider container-border"></div>
+    <section id="projects" class="project-section">
+      <h3 class="container container-border projects-title section-title">
+        Projects
+      </h3>
+      <a
+        href="https://dragonogs.github.io/photography/"
+        class="hover project-item popout-container"
       >
-      <ul>
-        <li><a href="#top" class="nav-link">Home</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="./pages/about.html" class="nav-link">About</a></li>
-        <li><a href="./pages/contact.html" class="nav-link">Contact</a></li>
-        <li>
-          <button
-            class="dropdown-btn"
-            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(0)'"
-          >
-            <i class="fas fa-bars"></i>
-          </button>
-        </li>
-      </ul>
-    </nav>
-    <nav id="mobile-nav" class="mobile-nav move-right">
-      <ul>
-        <li>
-          <a
-            href="#top"
-            class="mobile-nav-link"
-            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
-            >Home</a
-          >
-        </li>
-        <li>
-          <a
-            href="#projects"
-            class="mobile-nav-link"
-            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
-            >Projects</a
-          >
-        </li>
-        <li>
-          <a
-            href="./pages/about.html"
-            class="mobile-nav-link"
-            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
-            >About</a
-          >
-        </li>
-        <li>
-          <a
-            href="./pages/contact.html"
-            class="mobile-nav-link"
-            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
-            >Contact</a
-          >
-        </li>
-        <li>
-          <button
-            class="dropdown-btn"
-            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
-          >
-            <i class="fa fa-times mobile-nav-link"></i>
-          </button>
-        </li>
-      </ul>
-    </nav>
-    <main>
-      <header class="section hero">
-        <div class="container flex">
-          <div class="hero-content">
-            <h1 class="hero-title">Dragon<strong>ogs</strong></h1>
-            <!-- <h2 class="hero-subtitle">Oliver G Shipley</h2> -->
-            <a href="#projects" class="hero-CTA-btn"
-              >More<i class="fas fa-chevron-right"></i>
-            </a>
-          </div>
-          <!-- <div class="scroll-arrow">
-						<a href="#projects" class="arrow-link"
-							>scroll<i class="fa fa-long-arrow-down" aria-hidden="true"></i
-						></a>
-					</div> -->
-          <div class="socials-sidebar">
-            <ul>
-              <li>
-                <a href="https://twitter.com/dragonogs"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-              </li>
-              <li>
-                <a href="https://twitch.tv/dragonogs"
-                  ><i class="fab fa-twitch"></i
-                ></a>
-              </li>
-              <li>
-                <a href="https://github.com/Dragonogs"
-                  ><i class="fab fa-github"></i
-                ></a>
-              </li>
-              <li>
-                <a href="https://steamcommunity.com/id/Dragonogs"
-                  ><i class="fab fa-steam"></i
-                ></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </header>
-      <section class="section projects" id="projects">
-        <div class="container flex">
-          <h2 class="projects-title fade-in">Latest Projects</h2>
-          <ul>
-            <li class="fade-in from-right">
-              <a
-                href="https://dragonogs.github.io/photography/"
-                class="projects-feature project-photo"
-              >
-                <h3 class="feature-title">Photography</h3>
-                <p class="feature-subtitle">Photography portfolio</p>
-              </a>
-            </li>
-            <li class="fade-in from-left">
-              <a
-                href="./pages/diamond-jewellery.html"
-                class="projects-feature project-jewellery"
-              >
-                <h3 class="feature-title">Diamond Jewellery</h3>
-                <p class="feature-subtitle">Ecommerce jewellery website</p>
-              </a>
-            </li>
-            <li class="fade-in from-right">
-              <a href="./pages/map.html" class="projects-feature project-map">
-                <h3 class="feature-title">Map game</h3>
-                <p class="feature-subtitle">City memorisation game</p>
-              </a>
-            </li>
-            <li class="fade-in from-left">
-              <a
-                href="https://github.com/Dragonogs/Website"
-                class="projects-feature project-website"
-              >
-                <h3 class="feature-title">Dragonogs.pages.dev</h3>
-                <p class="feature-subtitle">My website</p>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-    </main>
-    <footer>
-      <p class="footer">Dragonogs | <span class="year">20</span></p>
+        <h4 class="project-title">Photography Portfolio</h4>
+        <img class="project-img" src="./img/photography.jpg" />
+      </a>
+      <div class="divider container-border"></div>
+      <a
+        href="https://diamond-jewellery.onrender.com/"
+        class="hover project-item left cl-dj popout-container"
+      >
+        <h4 class="project-title">Diamond Jewellery</h4>
+        <img
+          class="project-img cl-dj"
+          src="./img/diamond-jewellery-image-2.png"
+        />
+      </a>
+      <div class="divider container-border"></div>
+      <a
+        href="./pages/map.html"
+        class="hover project-item cl-ecq popout-container"
+      >
+        <h4 class="project-title">European City Quiz</h4>
+        <img class="project-img cl-ecq" src="./img/map.jpg" />
+      </a>
+      <div class="divider container-border"></div>
+    </section>
+    <footer class="footer container container-border">
+      <p class="footer-text">Dragonogs | <span class="year">2024</span></p>
     </footer>
   </body>
 </html>

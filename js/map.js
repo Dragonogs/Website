@@ -77,26 +77,26 @@ function checkCoverage(tCircle) {
   const circlePoly = turf.polygon(tCircle.geometry.coordinates);
   // Merge together the guess tPoly and the current total guess mesh
   union = turf.union(circlePoly, union);
-  console.time("ForEach")
+  console.time("ForEach");
   COUNTRY_DATA.forEach((country) => {
     let countryID = country.properties.ISO2.toLowerCase();
     // if country already covered log already covered
-    if (coveredCountries.includes(countryID)) return
-    console.log(country)
+    if (coveredCountries.includes(countryID)) return;
+    console.log(country);
     const sect = turf.intersect(union, country);
     // If section covers country calc area
-    if (sect == null) return
+    if (sect == null) return;
     let sectArea = turf.area(sect);
     let countryArea = turf.area(country);
-    const coverage = sectArea / countryArea
+    const coverage = sectArea / countryArea;
     // If country is fully covered by section
-    if (coverage < 0.99999) return
+    if (coverage < 0.99999) return;
     // if country already covered return else print country
-    if (coveredCountries.includes(countryID)) return
+    if (coveredCountries.includes(countryID)) return;
     coveredCountries.push(countryID);
     localStorage.setItem("covered", JSON.stringify(coveredCountries));
   });
-  console.timeEnd("ForEach")
+  console.timeEnd("ForEach");
 }
 
 // Function to display errors in the DOM
@@ -106,7 +106,7 @@ function displayError(message) {
   setTimeout(() => {
     document.getElementById("input").classList.remove("error");
     document.querySelector(".error-prompt").classList.remove("shake");
-  }, 500);
+  }, 2000);
 }
 
 // Function to display country arrays in the DOM and convert to flag spans
@@ -126,11 +126,11 @@ function countryDisplay() {
   });
 
   const remainingFlags = remainingCountries.map(
-    (id) => `<span class="fi fi-${id}"></span>`
+    (id) => `<span title=${id} class="fi fi-${id}"></span>`
   );
 
   const coveredFlags = coveredCountries.map(
-    (id) => `<span class="fi fi-${id}"></span>`
+    (id) => `<span title=${id} class="fi fi-${id}"></span>`
   );
 
   document.querySelector(".countries-uncomplete").innerHTML =
@@ -164,17 +164,17 @@ function guess() {
     function (results, status) {
       if (status !== "OK") {
         displayError("Input is not a vaild location.");
-        return
-      } 
+        return;
+      }
       const locality = results[0].types.includes("locality");
       const administrative = results[0].types.includes(
         "administrative_area_level_3"
       );
-      let isCity = locality || administrative
+      let isCity = locality || administrative;
       if (!isCity) {
         displayError("Guess was not a town or city.");
-          return
-        }
+        return;
+      }
       let lat = results[0].geometry.location.lat();
       let lng = results[0].geometry.location.lng();
       let latlng = `${lng}, ${lat}`;
@@ -183,8 +183,8 @@ function guess() {
 
       if (guesses.includes(latlng)) {
         displayError("Guess was already made.");
-        return
-      } 
+        return;
+      }
       guesses.push(latlng);
       circles.push({ lat: lat, lng: lng });
       localStorage.setItem("guesses", JSON.stringify(guesses));

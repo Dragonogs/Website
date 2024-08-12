@@ -1,23 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- META TAGS -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="../img/favicon.ico" />
     <script defer src="../js/map.js"></script>
     <script
       defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQrNhIo_HeEoly2f82JP8q-7oUcA_W7NE&libraries=places&callback=initMap"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYlvtx2XE0UXjfjOl0jSJaTjQWCIJemEU&libraries=places&callback=initMap"
     ></script>
     <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
-    <link href="../css/style.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Vujahday+Script&display=swap"
-      rel="stylesheet"
+    <meta
+      name="description"
+      content="Explore my personal website to discover my portfolio."
     />
+    <meta name="keywords" content="Dragonogs, portfolio, map" />
+    <meta name="author" content="Dragonogs" />
+    <link rel="canonical" href="https://dragonogs.pages.dev/" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Protocol tags -->
+    <meta property="og:title" content="Dragonogs" />
+    <meta
+      property="og:description"
+      content="Explore my personal website to discover my portfolio"
+    />
+    <meta
+      property="og:image"
+      content="https://dragonogs.pages.dev/img/cube-logo.png"
+    />
+    <meta property="og:url" content="https://dragonogs.pages.dev/" />
+    <meta
+      name="twitter:card"
+      content="https://dragonogs.pages.dev/img/cube-logo.png"
+    />
+    <meta name="twitter:site" content="@dragonogs" />
+    <meta name="twitter:title" content="Dragonogs" />
+    <meta
+      name="twitter:description"
+      content="Explore my personal website to discover my portfolio."
+    />
+    <meta
+      name="twitter:image"
+      content="https://dragonogs.pages.dev/images/twitter-card.jpg"
+    />
+    <!-- LINKS -->
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico" />
+    <link href="../css/redesign.css" rel="stylesheet" />
+    <link href="../css/map.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"
@@ -26,83 +57,65 @@
       src="https://kit.fontawesome.com/7a12354e0f.js"
       crossorigin="anonymous"
     ></script>
-    <script src="../js/main.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Map | Dragonogs</title>
+    <!-- JS SCRIPTS -->
+    <script src="../js/date.js" defer></script>
   </head>
   <body>
-    <nav class="navbar">
-      <a href="../index.html"
-        ><div class="brand">Dragon<strong>ogs</strong></div></a
-      >
-      <ul>
-        <li><a href="../index.html" class="nav-link">Home</a></li>
-        <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
-        <li><a href="./about.html" class="nav-link">About</a></li>
-        <li><a href="./contact.html" class="nav-link">Contact</a></li>
-        <li>
-          <button
-            class="dropdown-btn"
-            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(0)'"
-          >
-            <i class="fas fa-bars"></i>
-          </button>
-        </li>
-      </ul>
-    </nav>
-    <nav id="mobile-nav" class="mobile-nav move-right">
-      <ul>
-        <li>
-          <a
-            href="../index.html"
-            class="mobile-nav-link"
-            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+    <header>
+      <nav class="container-border">
+        <div id="dropdown" class="dropdown-nav">
+          <a content=""></a>
+          <a onclick="toggleDropdown()" class="active" href="../index.html"
             >Home</a
           >
-        </li>
-        <li>
-          <a
-            href="../index.html#projects"
-            class="mobile-nav-link"
-            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
+          <a onclick="toggleDropdown()" href="../index.html#projects"
             >Projects</a
           >
-        </li>
-        <li>
-          <a
-            href="#"
-            class="mobile-nav-link"
-            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
-            >About</a
+          <a href="./about.html">About</a>
+          <a href="./contact.html">Contact</a>
+        </div>
+      </nav>
+
+      <nav class="container-border container navbar">
+        <div class="nav-item">
+          <a class="nav-icon" href="https://steamcommunity.com/id/Dragonogs"
+            ><i class="fab fa-steam-square"></i></a
+          ><a class="nav-icon" href="https://github.com/Dragonogs"
+            ><i class="fab fa-github-square"></i></a
+          ><a class="nav-icon" href="https://twitter.com/dragonogs"
+            ><i class="fab fa-twitter-square"></i
+          ></a>
+        </div>
+        <button onclick="toggleDropdown()" id="dropdownBtn" class="hamburger">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-item">
+          <a id="homeLink" href="../index.html">Home</a>
+          <a id="projectsLink" class="active" href="../index.html#projects"
+            >Projects</a
           >
-        </li>
-        <li>
-          <a
-            href="./contact.html"
-            class="mobile-nav-link"
-            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
-            >Contact</a
-          >
-        </li>
-        <li>
-          <button
-            class="dropdown-btn"
-            onclick="document.getElementById('mobile-nav').style.transform = 'translateX(100%)'"
-          >
-            <i class="fa fa-times mobile-nav-link"></i>
-          </button>
-        </li>
-      </ul>
-    </nav>
-    <main class="site-wrap">
-      <h1 class="map-title">Europe City Coverage Quiz</h1>
-      <p class="description">
+          <a href="./about.html">About</a>
+          <a href="./contact.html">Contact</a>
+        </div>
+      </nav>
+    </header>
+    <main class="container-border container map-section">
+      <h1 class="map-title">European City Quiz</h1>
+      <p class="map-subtitle">
         Type out cities and try to cover the countries of Europe with circles!
       </p>
       <div class="game-wrapper">
-        <div class="map-wrap">
-          <div class="controls">
-            <div class="difficulty">
-              <p>Radius:</p>
+        <div class="input-wrapper">
+          <div class="controls-wrapper">
+            <div class="radius">
+              <label for="radius">Radius:</label>
               <select name="radius" id="radius">
                 <option value="10">10km</option>
                 <option value="25">25km</option>
@@ -111,52 +124,52 @@
                 <option selected="selected" value="200">200km</option>
               </select>
             </div>
-            <div class="guess-box">
-              <div class="input-wrap">
-                <input
-                  placeholder="Enter city name"
-                  type="text"
-                  id="input"
-                  name="input"
-                  class=""
-                />
+            <div class="text-input-wrapper">
+              <input
+                placeholder="Enter city name"
+                type="text"
+                id="input"
+                name="input"
+                class="input"
+              />
 
-                <button
-                  id="guessBtn"
-                  class="guess button"
-                  type="submit"
-                  onClick="guess()"
-                >
-                  Guess
-                </button>
-              </div>
-              <p class="error-prompt"></p>
-              <button class="reset button" onClick="reset()">reset</button>
+              <button
+                id="guessBtn"
+                class="guess-btn"
+                type="submit"
+                onClick="guess()"
+              >
+                Guess
+              </button>
             </div>
           </div>
-          <div id="map" class="map"></div>
+
+          <button class="reset-btn" onClick="reset()">reset</button>
         </div>
-        <div class="complete">
-          <p class="completed">
-            Complete:<br />
-            <span class="countries-complete"></span>
-          </p>
-          <p class="uncompleted">
-            Incomplete: <br />
-            <span class="countries-uncomplete"
-              ><span class="fi-ru"></span
-            ></span>
-          </p>
+        <div class="error-prompt"></div>
+        <div class="map-wrapper">
+          <div class="map-container">
+            <div id="map" class="map">map</div>
+          </div>
+          <div class="flag-wrapper">
+            <div class="completed">
+              Complete:
+              <div class="countries-complete"></div>
+            </div>
+            <div class="uncompleted">
+              Incomplete:
+              <div class="countries-uncomplete"></div>
+            </div>
+          </div>
         </div>
       </div>
-      <p class="link-para">
-        Check out the USA version here:
-        <a class="link button" href="./map-usa.html">USA</a>
-      </p>
+      <div class="usa">
+        Check out the usa version:
+        <a class="link-btn" href="./map-usa.html">USA</a>
+      </div>
     </main>
-
-    <footer>
-      <p class="footer">Dragonogs | <span class="year">20</span></p>
+    <footer class="footer container container-border">
+      <p class="footer-text">Dragonogs | <span class="year">2024</span></p>
     </footer>
   </body>
 </html>
