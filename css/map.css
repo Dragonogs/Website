@@ -205,6 +205,9 @@
 }
 
 @media (max-width: 786px) {
+  .map-container {
+    height: 35vh;
+  }
   .input-wrapper {
     flex-direction: column;
     gap: 1em;
@@ -227,6 +230,13 @@
     gap: 1em;
   }
   .map-container {
-    height: 20dvh;
+    height: 25vh;
+  }
+
+  .container-border {
+    margin: 0;
+  }
+  .dropdown-nav {
+    width: 100vw;
   }
 }
